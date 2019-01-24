@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script_050_research</title>
+<style type="text/css">
+	#radio {
+		margin-bottom: 3px
+	}
+	
+	#btn {
+		margin-top: 10px
+	}
+	
+	#answer {
+		margin-top: 10px;
+		border: 1px solid #660066;
+		display: none;
+	}
+</style>
+
+<script type="text/javascript">
+	function showAnswer() {
+		var answer = document.getElementById("answer");
+		answer.style.display = "block";
+		return false;
+	}
+	
+	function movePage() {
+		var move = document.getElementById("btn")[0];
+		move.onclick = location.replace("script_051_research.html");
+	}
+</script>
+</head>
+<body>
+<div id = "header">
+	<h3>1. 클라이언트 프로그램이 아닌 것은?</h3>
+</div>
+<div id = "radio">
+	<input type="radio" id="HTML" value="HTML" name="problem" />
+	<label for="HTML">(1) HTML</label>
+	<input type="radio" id="ORACLE" value="ORACLE" name="problem" />
+	<label for="ORACLE">(2) ORACLE</label>
+	<input type="radio" id="CSS" value="CSS" name="problem" />
+	<label for="CSS">(3) CSS</label>
+	<input type="radio" id="JAVASCRIPT" value="JAVASCRIPT" name="problem" />
+	<label for="JAVASCRIPT">(4) JAVASCRIPT</label>
+</div>
+<div id = "btn">
+	<button onclick="movePage()">다음</button>
+	<button onclick="showAnswer()">정답풀이</button>
+</div>
+<div id = "answer">
+	<p>정답:2</p>
+	<p>ORACLE은 데이터베이스 관리 프로그램 입니다.</p>
+</div>
+</body>
+</html>

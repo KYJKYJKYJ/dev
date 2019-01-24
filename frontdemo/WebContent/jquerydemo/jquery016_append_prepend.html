@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery016_append_prepend</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('button').click(function(){
+			//append: 뒤에 추가, prepend: 앞에 추가 (기준 : 부모)
+			
+			//$('부모요소').append('추가할 자식요소')
+			$('#my').append('<li>append</li>');//자식 요소 추가
+			
+			//$('부모요소').prepend('추가할 자식요소')
+			$('#my').prepend('<li>prepend</li>');//자식 요소 추가
+			
+			//$('추가자식요소').appendTo('부모요소')
+			$('<li>appendTo</li>').appendTo('#my');//자식 요소 추가
+			
+			//$('추가자식요소').prependTo('부모요소')
+			$('<li>prependTo</li>').prependTo('#my');//자식 요소 추가
+			
+			alert($('#my').children().length);
+		});
+	});
+</script>
+</head>
+<body>
+	<button>append</button>
+	<ul id="my">
+		<li>first</li>
+	</ul>
+</body>
+</html>

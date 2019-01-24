@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>{5=melon, 5000원, 2개, 4=orange, 800원, 10개, 3=grape, 4500원, 5개, 2=banana, 2500원, 2개, 1=apple, 1200원, 3개}</comment>
+</properties>

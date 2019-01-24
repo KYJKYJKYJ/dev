@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>css_020_display</title>
+<style type="text/css">
+/* display:요소의 레벨을 변경해주는 속성이다.*/
+a {
+	background-color: yellow;
+	width: 100px;
+	height: 100px;
+	display: block;
+	border: 1px solid black;
+	text-align: center;
+	line-height: 100px;
+}
+
+div {
+	background-color: red;
+	border: 1px solid black;
+	/*div요소는 inline으로 변경이 되었기 때문에
+	  width, height이 적용 안된다.*/
+	width: 100px;
+	height: 100px;
+	display: inline;
+}
+
+span {
+	background-color: olive;
+	/*인라인요소라 적용이 안된다. width, height*/
+	width: 100px;
+	height: 100px;
+	/*span요소의 레벨은 inline이지만 block레벨에서 사용할수 있는
+	  width, height을 지정 할 수 있다.*/
+	display: inline-block;
+}
+
+td {
+	width: 100px;
+	height: 100px;
+	text-align: center;
+	/*테이블의 셀을 세로 정렬할 때 vertical-align 속성을 사용한다.
+	  이 속성은 셀에서만 적용할 수 있다.*/
+	vertical-align: top
+}
+
+.sp {
+	border: 2px solid;
+	text-align: center;
+	vertical-align: middle;
+	display: table-cell;
+}
+
+h1 {
+	display: none; /*아예 보이지 않는다. 지워져요*/
+}
+</style>
+</head>
+<body>
+	<a href="http://www.w3schools.com">W3SCHOOLS</a>
+	<a href="http://www.naver.com">NAVER</a>
+	<a href="http://www.daum.net">DAUM</a>
+	<div id="aa">display</div>
+	<span>웹문서</span>
+	
+	<h1>테이블의 제목</h1>
+	<table border="1">
+		<tr>
+			<td>one</td>
+			<td>two</td>
+		</tr>
+	</table>
+	<span class="sp">text</span>
+	
+</body>
+</html>

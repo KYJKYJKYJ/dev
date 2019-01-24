@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery009_each</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		var arr = [10, 20, 30, 40];
+		/* for(var index in arr)
+			document.write(arr[i] + "<br/>"); */
+			
+			/* $(arr).each(function(index, value) {
+				document.write(index + "," + value + "<br/>");				
+			}); */
+			
+			/* $.each(arr,function(index, value) { // 위 함수와 동일
+				document.write(index + ","  + value + "<br/>");
+			}); */
+			
+			/* $.each(arr,function(index) { // 매개변수가 하나만 지정 되있으면 인덱스를 받아오는 것
+				document.write(index + ","  + arr[index] + "<br/>");
+			}); */
+			
+			$('ul li').each(function(index, value) {
+				/* document.write(index + "," + value.nodeName + "<br/>"); */ //노드 이름인 LI 가져옴 (HTML로 리턴됨)
+				/* document.write(index + "," + value.childNodes[0].nodeValue + "<br/>"); */ // 요소 내용가져옴
+				document.write(index + "," + $(value).text() + "<br/>"); //JQuery로 받아옴
+				
+			});
+			
+			/* $('ul li').each(function(index, value) {
+				document.write(index + "," + value.text() + "<br/>"); (X)
+			}); // 만약 텍스트 값을 받아오고 싶다고 text()를 사용할 수 없다. JQuery에서만 제공되는 것이 text() */
+			
+	});
+</script>
+</head>
+<body>
+	<ul>
+		<li>content1</li>
+		<li>content2</li>
+		<li>content3</li>
+	</ul>
+</body>
+</html>

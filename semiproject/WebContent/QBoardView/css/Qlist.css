@@ -1,0 +1,175 @@
+@charset "UTF-8";
+
+/* 폰트 받아오기 */
+@font-face {
+	font-family: 'seoul-hangang-jang-m';
+	src: url('../font/seoulhangangjangm.eot');
+	src: url('../font/seoulhangangjangm.eot?#iefix')
+		format('embedded-opentype'), url('../font/seoulhangangjangm.woff2')
+		format('woff2'), url('../font/seoulhangangjangm.woff') format('woff'),
+		url('../font/seoulhangangjangm.ttf') format('truetype'),
+		url('../font/seoulhangangjangm.svg#seoul-hangang-jang-m')
+		format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* 모든 전체 폰트 적용하기 */
+*{
+	font-family: seoul-hangang-jang-m
+}
+
+/* 처음 뜨는 그림 이미지 */
+.mainimg{
+	width:1200px;
+	margin-top:30px;
+	margin-bottom:30px;
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+/* 이미지 아래 글씨 이미지파일 */
+.maintext{
+	width:1000px;
+	display:block;
+	margin-top:30px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+/* 위에 두개 이미지 div로 묶기 */
+.main_intro{
+	width:1000px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+/* 게시판 테이블 */
+table.type1 {
+	width:1200px;
+	border-collapse : separate;
+	border-spacing: 1px;
+	/* text-align: center; */
+	line-height: 1.5;
+	border-top: 1px solid #ccc;
+	margin: 20px 10px;
+	border: 1px solid black;
+	margin: auto;
+	margin-top: 30px;
+	border-collapse: separate;
+}
+
+/* 표 맨 첫행 사이즈 조절 */
+th.no{
+	width:30px;
+}
+
+th.id {
+	width: 70px;
+}
+
+th.subject{
+	width : 70%;
+}
+
+th.date{
+	width : 70px;
+}
+
+/* 첫행 스타일 적용 */
+th {
+	padding: 10px;
+	font-weight: bold;
+	vertical-align: top;
+	border-bottom: 1px solid #ccc;
+	background: #efefef;
+	text-align: center;
+}
+
+/* subject부분 정렬 */
+td.subjectlist{
+	text-align:left;
+}
+
+/* 테이블 내용부분 스타일 */
+td {
+	padding: 10px;
+	vertical-align: center;
+	border-bottom: 1px solid #ccc;
+	text-align:center;
+}
+
+/* 쓰기버튼 사이즈 조절 */
+#writebtn_on, #writebtn_out{
+	width:75px;
+}
+
+/* 쓰기버튼 hover적용 */
+.writecheck img:last-child{display:none}
+.writecheck:hover img:first-child{display:none}
+.writecheck:hover img:last-child{display:inline-block}
+
+/* 쓰기버튼 div로 묶기 */
+.writecheck{
+	width:75px;
+	height:35px;
+	margin-left:1425px;
+}
+
+/* 테이블과 쓰기버튼 같이 묶은 div */
+.boardwrap{
+	width:1100px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+/* 페이지 이동 숫자 크기 */
+.pagemove {
+	text-align: center;
+	font-size:1.5em;
+	font-style: bord;
+}
+
+/* 페이지 이동 버튼 크기 조절 */
+#pagemove_prev, #pagemove_next{
+	width:20px;
+
+}
+
+/* 셀렉트박스, 텍스트 입력창 크기 및 마진 조절 */
+#optionbox, #searchtext{
+	font-size:20px;
+	margin-bottom:50px;
+	vertical-align: middle;
+}
+
+/* 검색 버튼 조절 */
+#searchbox{
+	width:75px;
+	margin-bottom:45px;
+	vertical-align: middle;
+}
+
+#search{
+	margin-left:190px;
+}
+
+/* a태그 전체 색상 없애기 */
+a{
+	text-decoration: none;
+	color:black;
+}
+/* 마우스 올릴때 변경되는 색상 */
+a:hover {
+	text-decoration: underline;
+	color: #ccc;
+	}
+
+/* 방문했던 페이지 색상변경 */	
+a:visited {
+	text-decoration: none; color: #767171;
+	}
+	
+
+

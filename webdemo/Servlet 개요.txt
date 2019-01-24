@@ -1,0 +1,27 @@
+MVC : Model View Controler
+
+모델1 방식 : Model, View+Controller 로 구현 (JSP, Servlet 둘 중 하나만 사용해서 구현하는 것)
+모델2 방식 : Model, View, Controller 다 나누어서 구현
+	    
+	Model : 데이터 처리 (DTO, DAO)  => java
+	View : 화면 출력 (JSP)		    => jsp
+	Controller : 요청 처리, 비지니스로직, 어떤 페이지를 응답할 건지 처리 (Servlet) => servlet 사용
+	
+	MVC 정리해오기
+	모델1, 모델2 방식 정리해오기
+	
+	클라이언트에는 Chrome이, 서버에는 Apache가 설치 되어있어야 함
+	
+		        a.html 요청
+	Chrome -------------------> Apache						tomcat
+				a.html 응답	   (Server)					  (Container)
+	(Client)<------------- (html, CSS, js, ...)
+	
+				b.jsp 요청						b.jsp 요청
+		   ---------------> (html, CSS, js, ...) ------>
+		   <----------------					<------
+		   										b.jsp 응답
+		   										
+		   										(원래는 서블릿만** 이해를 돕기위해 jsp)
+		   										
+		   										

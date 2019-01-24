@@ -1,0 +1,39 @@
+
+#searchform{
+    width:450px;
+    height:170px;
+   /* background-color: LightGoldenRodYellow; */
+   border-radius : 10px;
+   margin-left :auto;
+   margin-right:auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    
+    }
+    
+#btn_register{
+   width:200px;
+   display: block;
+   margin-left :auto;
+   margin-right:auto;
+   margin-top:50px;
+   margin-bottom:50px;
+   border-style:none;
+   border-radius : 10px;
+     color: white;
+     padding: 13px 25px;
+   text-align:center;
+   text-decoration: none;
+     font-size: 16px;
+   background-color: Tan;
+   cursor: pointer;
+}
+#time1{
+   display: none;
+}
+
+
+/*datepicer 버튼 롤오버 시 손가락 모양 표시*/
+.ui-datepicker-trigger{cursor: pointer;}
+/*datepicer input 롤오버 시 손가락 모양 표시*/
+.hasDatepicker{cursor: pointer;}

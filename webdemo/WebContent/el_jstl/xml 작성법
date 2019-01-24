@@ -1,0 +1,17 @@
+xml은 루트요소가 하나만 있어야 하고
+그 사이에 데이터 넣는 것임
+
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<students>
+	<student>
+		<name>홍길동</name>
+		<id>a1234</id>
+		<age>30</age>
+	</student>
+
+	<student>
+		<name>이영희</name>
+		<id>b1543</id>
+		<age>20</age>
+	</student>
+</students>

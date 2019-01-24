@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		var dnode = $('div').text(); // 텍스트만 리턴
+		var dnode2 = $('div').html(); // 자식요소와 텍스트 리턴
+		var dnode3 = $('input').val(); // value 값을 가져옴
+		/* alert(dnode + ' ' + dnode2 + ' ' + dnode3); */
+		
+		$('button').click(function() {
+			$('span').text('dom');
+			$('input').val('library');
+		});
+	});
+</script>
+</head>
+<body>
+<button>click</button>
+<div>
+<span>javascript</span>
+</div>
+<input type="text" value="jquery" />
+</body>
+</html>

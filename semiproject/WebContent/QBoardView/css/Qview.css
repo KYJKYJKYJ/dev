@@ -1,0 +1,130 @@
+@charset "UTF-8";
+
+/* 폰트 받아오기 */
+@font-face {
+	font-family: 'seoul-hangang-jang-m';
+	src: url('../font/seoulhangangjangm.eot');
+	src: url('../font/seoulhangangjangm.eot?#iefix')
+		format('embedded-opentype'), url('../font/seoulhangangjangm.woff2')
+		format('woff2'), url('../font/seoulhangangjangm.woff') format('woff'),
+		url('../font/seoulhangangjangm.ttf') format('truetype'),
+		url('../font/seoulhangangjangm.svg#seoul-hangang-jang-m')
+		format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* 모든 전체 폰트 적용하기 */
+* {
+	font-family: seoul-hangang-jang-m
+}
+
+/* qna 제목 크기*/
+#qna{
+	width:100px;
+	margin-top:50px;
+	margin-left:200px;
+}
+
+/* 답변버튼 */
+#reply_on, #reply_out{
+	width:75px;
+	margin-right:600px;
+	cursor: pointer;
+}
+
+/* 답변버튼 hover적용 */
+.replycheck img:last-child{display:none}
+.replycheck:hover img:first-child{display:none}
+.replycheck:hover img:last-child{display:inline-block}
+
+/* 답변버튼 div로 묶기 */
+.replycheck{
+	width:75px;
+	height:30px;
+	margin-left:1425px;
+}
+
+/* 게시판 테이블 */
+table.type2 {
+	/* width: 1200px; */
+    border-collapse: separate;
+    border-spacing: 1px;
+    text-align: left;
+    line-height: 1.5;
+    border-top: 1px solid #ccc;
+    margin: 20px 10px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+/* 테이블 첫번째컬럼 스타일 */
+table.type2 th {
+    width: 100px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+    background: #efefef;
+}
+
+/* 테이블 내용 부분 스타일 */
+table.type2 td {
+    width: 1100px;
+    padding: 10px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+}
+
+/* 목록, 수정, 삭제 버튼 크기 */
+#listbtn_on, #listbtn_out, #updatebtn_on, #updatebtn_out, #deletebtn_on, #deletebtn_out{
+	width:75px;
+	cursor: pointer;
+}
+
+/* 목록버튼 왼쪽 여백 */
+.listbtn_on{
+	margin-left:350px;
+}
+
+/* 수정버튼 왼쪽 여백 */
+.updatebtn_on{
+	margin-left:980px;
+}
+
+/* 목록버튼 hover적용 */
+.listcheck img:last-child{display:none}
+.listcheck:hover img:first-child{display:none}
+.listcheck:hover img:last-child{display:inline-block}
+
+/* 목록버튼 div로 묶기 */
+.listcheck{
+	width:75px;
+	height:30px;
+	margin-left:340px;
+}
+
+/* 수정버튼 hover적용 */
+.updatecheck img:last-child{display:none}
+.updatecheck:hover img:first-child{display:none}
+.updatecheck:hover img:last-child{display:inline-block}
+
+/* 수정버튼 div로 묶기 */
+.updatecheck{
+	width:75px;
+	height:30px;
+	margin-left:990px;
+}
+
+/* 삭제버튼 hover적용 */
+.deletecheck img:last-child{display:none}
+.deletecheck:hover img:first-child{display:none}
+.deletecheck:hover img:last-child{display:inline-block}
+
+/* 삭제버튼 div로 묶기 */
+.deletecheck{
+	width:75px;
+	height:30px;	
+}
+
+

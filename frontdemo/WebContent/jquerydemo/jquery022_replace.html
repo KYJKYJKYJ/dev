@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery022_replace</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+   $(document).ready(function(){
+      /* 
+      $('새요소').replaceAll('요소선택')
+      $('요소선택').replaceWith('새요소')
+      : 선택한 요소를 새 요소로 바꾼다.
+      */
+      
+      //p요소를 span요소로 변경
+      $('<span>content2</span>').replaceAll('p');
+      
+      //h2요소를 h3요소로 변겅
+      $('h2').replaceWith('<h3>replace Method</h3>');
+      
+      //replace()는 문자열의 일부를 찾아 수정한다.
+      /* var test = $('img').attr('src');
+      var text = test.replace('pic_t1', 'pic_t2');
+      $('img').attr('src', text); // 이미지 요소의 값을 text로 교체 */
+      
+      $('img').attr('src', $('img').attr('src').replace('pic_t1', 'pic_t2'));
+   });
+</script>
+</head>
+<body>
+   <h2>교체메소드</h2>
+   <p>content1</p>
+   <p>content2</p>
+   <img src="images/pic_t1.jpg">
+</body>
+</html>

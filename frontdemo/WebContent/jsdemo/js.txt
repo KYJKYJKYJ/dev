@@ -1,0 +1,10 @@
+<!-- 인접관계선택자를 이용해서  다른 노드를 접근할때는
+ IE8버전 이하과 그 밖에 브라우저(파이어폭스, 크롬, 사파리)등의
+ 에서는 공백문자의 인식여부 차이가 있다. 이를 해결하기 위해서
+ nodeType, nodeName, nodeValue을 이용한다.
+ 
+   [노드의 종류]      nodeType     nodeName    nodeValue
+ element(요소)노드         1            요소명               null
+ attribute(속성)노드     2            속성명               속성값
+ text(텍스트)노드            3            #text       문자열
+  -->

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<style type="text/css">
+h1 {
+	background-color: yellow;
+}
+
+span {
+	border: 1px solid black;
+}
+
+div {
+	border: 2px solid red;
+}
+
+h3 {
+	background-color: aqua;
+}
+</style>
+
+<script type="text/javascript">
+/*
+ 	$('요소선택').unwrap(); : 선택한 요소의 부모요소 삭제
+ 	$('요소선택').wrap(새요소); : 선택한 요소를 새 요소로 각각 감쌈
+ 	$('요소선택').wrapAll(새요소); : 선택한 요소를 새 요소로 한꺼번에 감쌈
+ 	$('요소선택').wrapInner(새요소); : 선택한 요소에 하위 요소를 새 요소로 감쌈
+ */
+ 
+$('document').ready(function() {
+	//strong 요소의 부모요소인 h1 제거
+	$('strong').unwrap(); 
+ 
+  	//.ct1요소의 부모요소를 설정
+ 	$('.ct1').wrap('<div/>');
+ 
+ 	//.ct4의 모든 요소를 하나로 묶어 div요소로 감쌈
+ 	$('.ct4').wrapAll('<div/>');
+ 
+    //h3요소로 <li>태그의 하위요소를 감쌈
+ 	$('li').wrapInner('<h3/>');
+});
+
+</script>
+</head>
+<body>
+   <div>
+	  <h1 id='tit_1'>
+         <strong>객체 조작 및 생성</strong>
+      </h1>
+   </div>
+   <span>span</span>
+   <p class='ct1'>content1</p>
+   <p class='ct4'>content8</p>
+   <p class='ct2'>content2</p>
+   <p class='ct1'>content3</p>
+   <p class='ct4'>content4</p>
+   <p class='ct4'>content5</p>
+   <ul>
+      <li>content6</li>
+      <li>content7</li>
+   </ul>
+</body>
+</html>

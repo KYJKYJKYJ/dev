@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+ #dv{  
+   display:none;
+ }
+</style>
+
+<script type="text/javascript">
+ window.onload=function(){
+
+    document.getElementById('prev').onclick=function(){
+       document.frm.submit();
+    }
+    
+    document.getElementById('solution').onclick=function(){
+       document.getElementById('dv').style.border='1px solid purple';
+       document.getElementById('dv').style.display='block';
+       return false; //다른 창을 안띄우게 하기 위해서 return false
+    }
+ }
+</script>
+</head>
+<body>
+  <form name="frm" action="script_050_research_answer.html">
+   <div id="wrap">
+      <p>2. 줄바꿈을 위한 요소는 무엇인가?</p>
+
+      <input type="radio" name="one" value="html">(1) BR 
+      <input type="radio" name="one" value="oracle">(2) DIV
+      <input type="radio" name="one" value="css">(3) SPAN
+      <input type="radio" name="one" value="javascript">(4) MENU
+
+      <p>
+         <button id="prev">이전</button>
+         <button id="solution">정답풀이</button>
+    </p>
+     <div id="dv">
+       <p>정답:1</p>
+       <p>BR은 강제줄바꿈을 의미하는 요소입니다.</p>
+     </div>
+   </div>
+</form>
+</body>
+</html>

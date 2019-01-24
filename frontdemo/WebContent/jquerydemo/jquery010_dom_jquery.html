@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery010_dom_jquery</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+   $(document).ready(function() {
+      var btnNode = document.getElementById("btn");
+      var btnEle = $('#btn');
+      //[object HTMLButtonElement] , [object Object]
+      document.write(btnNode + " , " + btnEle + "<br/>");
+      
+      //[object Object] , [object HTMLButtonElement]
+      //dom을 jquery로 가져올때              jquery를 dom으로 가져올때
+      document.write($(btnNode) + " , " + btnEle[0]);
+      
+   });
+</script>
+</head>
+<body>
+   <button id="btn">commit</button>
+</body>
+</html>

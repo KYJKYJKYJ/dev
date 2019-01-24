@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+</script>
+</head>
+<body>
+<form>
+<fieldset>
+<legend>납품자정보</legend>
+	<ol type="1">
+		<li><label>납품자명 :</label> <input type="text" placeholder="name" /></li>
+		<li><label>email :</label> <input type="email" placeholder="answs@naver.com" /></li>
+		<li><label>홈페이지 :</label> <input type="url" placeholder="http://" /></li>
+	</ol>
+</fieldset>
+
+<fieldset>
+<legend>납품정보</legend>
+	<ul type="disc">
+		<li><label>상품명 :</label> <input type="text" list="list"/></li>
+		<datalist id="list">
+		<option value="졸려">sleep</option>
+		</datalist>
+		<li><label>납품수량 :</label> <input type="number" placeholder="최소 10 이상" min="10" max="100" step="10" /></p></li>
+		<li><label>납품등급 :</label> <input type="range" min="0" max="10" step="2" /></li>
+		<li><label>기타사항 :</label> <textarea></textarea></li>
+	</ul>
+</fieldset>
+<input type="button" value="send message" />
+</form>
+</body>
+</html>

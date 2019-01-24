@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>css_023_float</title>
+<style type="text/css">
+* {
+   margin: 0;
+   padding: 0;
+   border-width: 0
+}
+
+
+.wrap {
+   width: 900px;
+   height: 500px;
+   background-color: yellow;
+}
+
+#header {
+	width: 900px;
+	height: 100px;
+	background-color: blue;
+	
+}
+
+div.colmn_left {
+	float: left;
+}
+
+.colmn_left .box2_sub1 {
+	width: 600px;
+	height: 128px;
+	background-color: olive;
+	border:1px solid black;
+}
+
+.colmn_left .box2_sub2 {
+	width: 600px;
+	height: 268px;
+	background-color: olive;
+	border:1px solid black;
+}
+
+div.colmn_right {
+	float: right;
+}
+
+.colmn_right .box3_sub1 {
+ 	width: 280px;
+ 	height: 98px;
+ 	background-color: green;
+ 	border:1px solid black;
+ 	
+}
+
+.colmn_right .box3_sub2 {
+ 	width: 280px;
+ 	height: 148px;
+ 	background-color: green;
+ 	border:1px solid black;
+}
+
+.colmn_right .box3_sub3 {
+ 	width: 280px;
+ 	height: 148px;
+ 	background-color: green;
+ 	border:1px solid black;
+}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+      <div class="box1" id="header"></div>
+      <div class="colmn_left">
+         <div class="box2_sub1"></div>
+         <div class="box2_sub2"></div>
+      </div>
+      <div class="colmn_right">
+         <div class="box3_sub1"></div>
+         <div class="box3_sub2"></div>
+         <div class="box3_sub3"></div>
+      </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery011_this</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('button').click(process);
+});
+
+function process() {
+	//[object HTMLButtonElement]
+	//document.write(this); //this는 이벤트가 발생한 button을 가르킴
+	document.write(this + " , " + $(this) + "<br/>"); //JQuery로도 가져옴
+	
+	//body 가져오기
+	document.write(this.parentNode.nodeName + " , " + $(this).parent()[0].tagName + "<br/>");
+	//parent()는 JQuery에서 지원함
+	//parent()[0]을 통해 DOM 형태로 가져옴..
+	
+	//JQuery 형태로 가져오면 무조건 Object
+	//DOM 형태로 가져오면 무조건 HTML
+}
+</script>
+</head>
+<body>
+ <button id="btn">commit</button>
+</body>
+</html>

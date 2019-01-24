@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery_017_clone</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('button:nth-of-type(2)').click(function(){
+			var copy = $('ul:nth-of-type(1)').children().clone();
+			$('ul:nth-of-type(2)').append(copy); //append:자식요소로 추가
+			//왜 id="myList"를 안쓰냐 => id는 유니크 값이기 때문이다.
+			//class는 중복이 가능하므로 사용하여도 된다.
+		});	
+	});
+</script>
+</head>
+<body>
+	<button>click</button>
+	<button>clone</button>
+	<ul style="background-color: yellow">
+		<li id="myList">content</li>
+	</ul>
+	<ul style="background-color: aqua">
+	</ul>
+</body>
+</html>

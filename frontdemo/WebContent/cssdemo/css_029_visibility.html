@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>css_029_visibility</title>
+<style type="text/css">
+div{
+	width: 100px;
+	heigh: 100px;
+	background-color: red;
+	visibility: hidden;
+	width: 0px;
+	height: 0px; /* 이렇게 요소크기까지 0으로 하면 display: none 과 동일한 효과 */
+}
+</style>
+</head>
+<body>
+<!--visibility
+	1. 요소 박스를 표시하거나 감출 때 사용되는 속성이다.
+	2. display:none과 비슷하지만 visibility:hidden은 요소의 원래 공간은 유지하고 있다. -->
+	
+	<p>before</p>
+	<div></div>
+	<p>after</p>
+</body>
+</html>

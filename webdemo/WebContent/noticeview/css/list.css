@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+#notice_section{
+	width:1200px;
+	padding-top: 30px;
+	margin: auto;
+}
+
+#notice_content1 {
+	display: block;
+	margin:auto;
+}
+
+#notice_content2 {
+	display: block;
+	margin: auto;
+}
+
+/* table 부분 ------------------------------------------------------- */
+
+#notice_table {
+      width: 70%;
+      margin: 0 auto;     /* 가로로 중앙에 배치 */
+      padding-top: 10%;   /* 테두리와 내용 사이의 패딩 여백 */
+    }
+     
+    #notice_write_btn {
+ 
+   
+
+    }
+     
+    /* Bootstrap 수정 */
+    .table > thead {
+      background-color: #b3c6ff;
+    }
+    .table > thead > tr > th {
+      text-align: center;
+    }
+    .table-hover > tbody > tr:hover {
+      background-color: #e6ecff;
+    }
+    .table > tbody > tr > td {
+      text-align: center;
+    }
+    .table > tbody > tr > #title {
+      text-align: left;
+    }
+     
+    div > #paging {
+      text-align: center;
+    }
+   
+
+

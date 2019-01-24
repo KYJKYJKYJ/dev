@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<style type="text/css">
+	.aa{
+		width: 300px;
+		height: 300px;
+		background-color: yellow;
+	}
+	
+	.bb{
+		width: 200px;
+		height: 200px;
+		background-color: blue;
+	}
+	
+	p{
+		width: 100px;
+		height: 100px;
+		background-color: red;
+	}
+</style>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('p').click(function(e) {
+			alert('p element');
+			//e.stopPropagation(); // 이벤트 전파 중지 (겹쳐서 해놓으면 이벤트가 전부 발생하는 거 막아줌)
+			return false; // 기본 이벤트 차단
+		});
+		
+		$('.bb').click(function(e) {
+			alert('inner div');
+			//e.stopPropagation();
+			return false;
+		});
+		
+		$('.aa').click(function(e) {
+			alert('outer div');
+			//e.stopPropagation();
+			return false;
+		});
+		
+		$('a').click(function(e)) {
+			e.preventDefault() /* preventDefault 요소의 이벤트를 차단 */
+			/* 제이쿼리에는 return false; 로 대체 가능 */
+		}
+	});
+</script>
+</head>
+<body>
+<a href="http://www.daum.net">daum</a>
+	<h1>title</h1>
+	<div class="aa"> <!-- 가로세로 300 -->
+		<span>dd</span>
+		<div class="bb"> <!-- 가로세로 200 -->
+			<p>p test</p> <!-- 가로세로 100 -->
+		</div>
+	</div>
+</body>
+</html>

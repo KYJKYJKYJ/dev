@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script_050_research</title>
+<style type="text/css">
+#dv{  
+   display:none;
+ }
+ 
+</style>
+
+<script type="text/javascript">
+ window.onload=function(){
+    document.getElementById('next').onclick=function(){
+       document.frm.submit();
+    }
+    
+    document.getElementById('solution').onclick=function(){
+       document.getElementById('dv').style.border='1px solid purple';
+       document.getElementById('dv').style.display='block';
+       return false; //다른 창을 안띄우게 하기 위해서 return false
+    }     
+ }
+</script>
+</head>
+<body>
+  <div id="wrap">
+   <form name="frm" action="script_051_research_answer.html">
+   <p>1. 클라이언트 프로그램이 아닌 것은?</p>
+   
+   <input type="radio" name="one" value="html">(1) HTML 
+   <input type="radio" name="one" value="oracle">(2) ORACLE
+   <input type="radio" name="one" value="css">(3) CSS
+    <input type="radio" name="one" value="javascript">(4) JAVASCRIPT
+    
+    <p> 
+    <button id="next">다음</button>
+    <button id="solution">정답풀이</button>
+    </p>
+     <div id="dv">
+       <p>정답:2</p>
+       <p>ORACLE은 데이터베이스 관리시스템입니다</p>
+     </div>
+    </form>
+   
+  </div>
+  
+ 
+</body>
+</html>
+
+
+
+
+
+
+
+
+

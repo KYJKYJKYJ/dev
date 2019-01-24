@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	//속성 : attribute(HTML), property(Javascript)
+	$("button").click(function() {
+		//jquery001_cdn.html
+		//alert($('a').attr('href'));
+		//정적인 요소의 값을 가져오는 attr (명시된 값을 가져옴)
+		
+		//http://localhost:8090/frontdemo/jquerydemo/jquery001_cdn.html
+		//alert($('a').prop('href'));
+		//동적인 요소의 값을 가져오는 prop (기본값을 가져옴) **
+		
+		alert($('input').attr('checked'));
+		//체크를 하던 안하던 무조건 undefined
+		alert($('input').prop('checked'));
+		//체크 여부에 따라 true, false
+	});
+});
+</script>
+</head>
+<body>
+	<button id="btn">commit</button>
+	<a href="jquery001_cdn.html">첫페이지</a>
+	<input type="checkbox" />
+	<div>test</div>
+</body>
+</html>

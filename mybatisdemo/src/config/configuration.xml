@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <properties resource="config/oracle.properties" />
+  <!-- 설정한 값 내의 프로퍼티를 읽어온다 -->
+  <!-- 지금까지는 직접적 커넥션 객체를 생성함으로 DB에 접속해서 가져오는 관계, 
+  하지만 이제는 Pool이라는 커넥션 같은 객체 값들이 저장된 영역을 거쳐서 연결하게 할것 -->
+
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+    <mapper resource="part01/dao/empMapper.xml"/> <!-- mapper xml 경로 -->
+    <mapper resource="part02/dao/memMapper.xml"/>
+    <mapper resource="part03/dao/joinMapper.xml"/>
+    <mapper resource="part04/dao/memMapper.xml"/>
+  </mappers>
+</configuration>

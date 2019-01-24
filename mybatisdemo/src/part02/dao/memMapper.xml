@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace = "mem" >
+  	<select id = "all" resultType="part02.dto.MemDTO">
+  		select * from mem order by num
+  	</select>
+  	
+  	<!-- insert 쿼리 사용시 insert -->
+  	<!-- insert, delete, update 다 resultType은 삽입, 삭제, 수정된 컬럼 수 (int)만 리턴해주므로 따로 선언하면 안됨! -->
+  	<insert id="ins" parameterType="part02.dto.MemDTO">
+  		insert into mem values(mem_num_seq.nextval, #{name,jdbcType=VARCHAR}, #{age}, #{loc,jdbcType=VARCHAR})
+  		<!-- null 값 허용을 mybatis에서 하려면 #{컬럼명,jdbcType=VARCHAR} 해야함 -->
+  	</insert>
+  	
+  	 <update id="upt" parameterType="java.util.HashMap">
+     	 update mem set loc=#{loc}
+   	     where num=#{num}
+  	 </update>
+   
+     <delete id="del" parameterType="java.lang.Integer">
+         delete from mem where num=#{num}
+   	 </delete>
+   
+   <!-- 다중 insert -->
+   <!-- 
+      insert all
+      into mem values(1,'홍길동',30,'서울')
+      into mem values(2,'유대리',28,'경기')
+      select * from dual;
+    -->
+    <select id="keyNum" resultType="java.lang.Integer"
+    flushCache="true">
+       select mem_num_seq.nextval from dual
+    </select>
+    
+    <insert id="multiIns" parameterType="java.util.List">
+       insert all
+          <foreach collection="list" item="element">   <!-- 배열은 array parameterType생략 가능-->
+             into mem values(
+             #{element.num},#{element.name},
+             #{element.age},#{element.loc})   <!-- 첫번째꺼는 index넣어준다 squence -->
+          
+          </foreach>
+       select * from dual
+    </insert>
+    
+    <!-- 다중 delete -->
+    <delete id="multiDel">
+       delete from mem   <!-- 구분지어줄때 , 넣어줘야한다.(separator=",") -->
+       where num in(
+       <foreach collection="array" item="element" separator=",">
+       <!-- #{element} = ${element} 상관없다 -->
+          #{element}
+       </foreach>
+       )
+    </delete>
+    
+    <!-- dynamic if -->
+    <select id="search" parameterType="part02.dto.MemDTO" resultType="part02.dto.MemDTO">
+       select * from mem
+       <!-- where 태그를 사용하지 않고 select * from mem where 다음에 if태그를 사용하면 
+     		  조건에 만족하지 않을떄 where때문에 에러가 발생할 수 있다.-->
+       <!-- <where>
+          <if test="name!=null">
+             name like '%' || #{name} || '%'
+          </if>
+          
+          <if test="age!=0">
+             or age>#{age}
+          </if>
+       </where>  -->
+       <!-- trim prefix="where"은 select * from mem 보다 앞에서 where을 실행시켜달라는것임 -->
+       <!-- suffixOverrides="or/and" 해 놓으면 앞에 조건에 or/and가 있으면 제거가 되고 수행을 한다. -->
+       <!-- priffixOverrides="or/and" 해 놓으면 뒤에 조건에 or/and가 있으면 제거가 되고 수행을한다. -->
+       <trim prefix="where" suffixOverrides="or/and">
+       <if test="name!=null">
+             name like '%' || #{name} || '%' or
+          </if>
+          
+          <if test="age!=0">
+             age>#{age}
+          </if>
+       </trim>
+    </select>
+    
+    <!-- 다중 update -->
+    <update id="multiUpt" parameterType="part02.dto.MemDTO">
+       update mem
+       <!-- 요소로 지정한다. set name=#{name},age=#{age} -->
+       <!-- where 처럼 set도 요소를 이용해서 선언해야함 -->
+       <!-- set말고 trim으로 하려면 trim요소 안에 prefix="set"을 해주고 ,가 있으면 suffixOverrides=","쓴다. -->
+       <trim prefix="set" suffixOverrides=",">
+          <if test="name!=null">
+             name=#{name},
+          </if>
+          <if test="age!=0">
+             age=#{age},
+          </if>
+          <if test="loc!=null">
+             loc=#{loc}
+          </if>
+       </trim>
+       where num=#{num}
+    </update>
+    
+    <!-- choose 동적 SQL 사용 -->
+    <insert id = "insData" parameterType="part02.dto.MemDTO">
+    	insert into mem values(mem_num_seq.nextval, #{name}, #{age}, 
+    	<choose>
+    		<when test="loc==null">
+    		'test'
+    		</when>
+    		<otherwise>
+    		#{loc}
+    		</otherwise>
+    	</choose>
+    	)
+    </insert>
+</mapper>

@@ -1,0 +1,14 @@
+@charset "UTF-8";
+	
+    #contentForm {
+      width: 40%;
+      margin: 0 auto;
+      padding-top: 12%;
+    }
+ 
+    .table > thead > tr > th, .table > tbody > tr > th {
+      background-color: #e6ecff;
+      text-align: center;
+    }
+
+

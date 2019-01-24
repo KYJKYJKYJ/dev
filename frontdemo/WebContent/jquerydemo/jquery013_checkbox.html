@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery013_checkbox</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	//$(function() {
+	//	
+	//}); 와 동일
+	
+	$('#check_all').click(function selAll() {
+		var check = $(this).prop('checked');
+		if(check) {
+			$('.chk').prop('checked', true);
+		} else {
+			$('.chk').prop('checked', false);
+		}
+	});
+	
+	/* $('.check_all').click(function() {
+		$('.chk').prop('checked', $(this).prop('checked'));
+						//속성명		//속성값
+	}); */
+	
+	$('button').click(function() {
+		$('.chk:checked').each(function() {
+						//모든 요소를 방문하기 위해
+			$(this).parents('tr').remove();
+				//parents().parents()
+				//  td        td의 부모 tr
+		});
+	});		
+});
+
+</script>
+</head>
+<body>
+<button>삭제</button>
+   <div class="wrap">
+      <table>
+         <tr>
+            <th><input type="checkbox" class="check_all" id="check_all"/><label for="check_all">전체선택</label></th>
+            <th>제목</th>
+            <th>작성자</th>
+         </tr>
+
+         <tr>
+            <td><input type="checkbox" class="chk"></td>
+            <td>title1</td>
+            <td>writer1</td>
+         </tr>
+         <tr>
+            <td><input type="checkbox" class="chk"></td>
+            <td>title2</td>
+            <td>writer2</td>
+         </tr>
+         <tr>
+            <td><input type="checkbox" class="chk"></td>
+            <td>title3</td>
+            <td>writer3</td>
+         </tr>
+         <tr>
+            <td><input type="checkbox" class="chk"></td>
+            <td>title4</td>
+            <td>writer4</td>
+         </tr>
+         <tr>
+            <td><input type="checkbox" class="chk"></td>
+            <td>title5</td>
+            <td>writer5</td>
+         </tr>
+      </table>
+   </div>
+</body>
+</html>

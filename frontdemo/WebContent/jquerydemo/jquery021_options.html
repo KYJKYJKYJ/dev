@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery021_options</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+  var arr = [ [ "불고기", "삼계탕", "비빔밥" ], 
+    [ "짜장면", "짬뽕", "탕수육" ],
+    [ "회덮밥", "덴뿌라", "우동" ] ];
+
+
+$(document).ready(function() {
+  $('#menu').change(function() {
+	var row = $('#menu option:selected').index();
+	//select요소의 option요소 삭제
+	$.each($('#sub option'),function(index){
+		if(index!=0){
+			$(this).remove();
+		}
+	});
+	
+	//select요소에 option요소 추가
+	$.each(arr[row-1],function(index,value){
+		$('#sub').append('<option value="'+value+'">'
+				   +value+'</option>');
+	});
+});/////////////////////////////
+
+$('#sub').change(function() {
+	var value = "고객님은 ";
+	value += $('#menu option:selected').text() + " ";
+	value += $('#sub').val();
+	value += " 주문하셨습니다.";
+	alert(value);
+});////////////////////////////////////////
+
+
+});
+</script>
+</head>
+<body>
+	<select id="menu" name="menu">
+		<option value="">메뉴선택</option>
+		<option value="m1">한식</option>
+		<option value="m2">중식</option>
+		<option value="m3">일식</option>
+	</select>
+
+	<select id="sub">
+		<option value="">음식선택</option>
+
+	</select>
+</body>
+</html>

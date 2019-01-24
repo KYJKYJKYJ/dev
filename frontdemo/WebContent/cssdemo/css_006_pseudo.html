@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>css_006_pseudo</title>
+<style type="text/css">
+/*
+가상클래스(pseudo class) :  사용자가 정의한 클래스는 아니지만 클래스 처럼 사용되며 요소의 상테에  따라 스타일을 지정할 때 사용
+*/
+
+/* 한번도 방문하지 않았을 경우 */
+a:link {
+	color: red;
+}
+
+/* 한번이라도 방문 했을 경우 */
+a:visited {
+	color: green;
+}
+
+/* 마우스 포인터를 요소에 올렸을 때 스타일 지정 */
+a:hover {
+	color: olive;
+}
+
+/* 마우스 포인터로 요소를 눌렀을 때 */
+a:active {
+	color: orange;
+}
+
+/* 요소가 포커스를 얻었을 때 ()tab키로 요소 선택할 때) */
+a:focus {
+	color: black;	
+}
+
+/* pseudo class 작성시 link->visited->hover->active 순으로 작성해야 한다. */
+
+</style>
+</head>
+<body>
+<a href="http://www.samsung.com">삼성</a>
+</body>
+</html>

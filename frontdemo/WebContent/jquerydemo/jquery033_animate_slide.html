@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery033_animate_slide</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+   $(document).ready(function() {
+       $('#btnup').click(function(){
+          $('img').slideUp('slow',function(){
+             alert('slideUp end');
+          });
+       });
+       
+       $('#btndown').click(function(){
+          $('img').slideDown('fast');
+       });
+       
+       $('#btntoggle').click(function(){
+          $('img').slideToggle('normal');
+       });
+   });
+</script>
+</head>
+<body>
+<button id="btnup">slideUp</button>
+   <button id="btndown">slideDown</button>
+   <button id="btntoggle">slideToggle</button>
+   <br />
+   <img src="images/aa.jpg" />
+</body>
+</html>

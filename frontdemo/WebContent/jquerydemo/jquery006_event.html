@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery006_event</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+   <script type="text/javascript">
+      $(document).ready(function(){
+         $('input[type = "button"]').on('click', function(){
+            /* == document.frm.submit(); */
+            $('form').submit();
+         });
+      });
+      
+      /* document.getEle().value */
+      /* document.getEle().innerText */
+      /* document.getEle().innerHTML */
+      /* 제이쿼리에서는 다음 내용을 함수로 사용한다. */
+   </script>
+</head>
+<body>
+   <p>sample</p>
+      <form name = "frm" action="test.jsp" method = "get">
+         <label for = "fname">이름</label>
+         <input type = "text" name = "fname" id = "fname"/>
+         <input type = "button" value = "commit"/>
+      </form>
+</body>
+</html>

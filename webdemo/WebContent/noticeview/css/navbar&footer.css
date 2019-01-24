@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+/* 메뉴바 홈페이지메뉴 폰트 */	
+.navbar-header a {
+	font-family: '서울한강 장체 BL', serif;
+	font-weight: bold;
+	font-size: 30px;
+}
+
+/* 메뉴바  선택메뉴들 폰트*/
+#nav ul a {
+	font-family: '서울한강 장체 BL', serif;
+	font-size: 20px;
+}
+
+/* 회전목마 제목폰트 */
+.carousel-caption h3{
+	font-family: '서울한강 장체 BL', serif;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+/* 회전목마 내부폰트 */
+.carousel-caption p{
+	font-family: '서울한강 장체 B', serif;
+	font-size: 20px;
+}
+
+#footer {
+	clear: both;
+	height: 230px;
+	background-color: black;
+	font-family: '서울한강 장체 BL', serif;
+	font-size: 20px;
+	color: gray;
+}
+
+/* 메인화면 footer 이미지, 글자 위치, 크기 설정 */
+#footer img{
+	height: 200px;
+	padding-top: 20px;
+	position: absolute;
+	right: 5%;
+}
+
+#footer p{
+	padding: 20px;
+}

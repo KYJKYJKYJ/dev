@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		//함수의 호출 실행 시점을 프로그래머가 아닌 시스템에서 결정하는 함수 : 콜백(CALLBACK) 함수
+		//on('이벤트', 콜백함수);
+		/* $('button').on('click', function() {
+			alert('event call');
+		}); */
+		
+		//이벤트 메소드(콜백함수);
+		$('button').click(function() {
+			alert('event2 call');
+		});
+		
+		console.log($('button'));
+		$('button').click(process);
+	});
+	
+	function process() {
+		alert('event3 call');
+	}
+</script>
+</head>
+<body>
+	<button id="btn">버튼</button>
+</body>
+</html>

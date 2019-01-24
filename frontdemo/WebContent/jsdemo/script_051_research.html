@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>script_051_research</title>
+<style type="text/css">
+	#radio {
+		margin-bottom: 3px
+	}
+	
+	#btn {
+		margin-top: 10px
+	}
+	
+	#answer {
+		margin-top: 10px;
+		border: 1px solid #660066;
+		display: none;
+	}
+</style>
+
+<script type="text/javascript">
+	function showAnswer() {
+		var answer = document.getElementById("answer");
+		answer.style.display = "block";
+	}
+	
+	function movePage() {
+		var move = document.getElementById("btn")[0];
+		move.onclick = location.replace("script_050_research.html");
+	}
+</script>
+</head>
+<body>
+<div id = "header">
+	<h3>2. 줄바꿈을 위한 요소는 무엇인가?</h3>
+</div>
+
+<div id = "radio">
+	<input type="radio" id="BR" value="BR" name="problem" />
+	<label for="BR">(1) BR</label>
+	<input type="radio" id="DIV" value="DIV" name="problem" />
+	<label for="DIV">(2) DIV</label>
+	<input type="radio" id="SPAN" value="SPAN" name="problem" />
+	<label for="SPAN">(3) SPAN</label>
+	<input type="radio" id="MENU" value="MENU" name="problem"  />
+	<label for="MENU">(4) MENU</label>
+</div>
+
+<div id = "btn">
+	<button onclick="movePage()">이전</button>
+	<button onclick="showAnswer()">정답풀이</button>
+</div>
+
+<div id = "answer">
+	<p>정답:1</p>
+	<p>BR은 강제줄바꿈을 의미하는 요소입니다.</p>
+</div>
+</body>
+</html>

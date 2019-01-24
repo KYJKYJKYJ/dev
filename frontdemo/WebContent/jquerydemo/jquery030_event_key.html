@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+/*
+keydown(), keypress()
+  : 선택한 요소에서 키보드 자판을 눌렀을때 이벤트가 발생한다.
+  	차이점은 keydown()은 모든 자판에 대한 고유 키값을 가져올 수 있으나
+    keypress()은 문자(a~z, !, @, #,...등)자판에 대한 고유 키값을
+  	가져올 수 있으나 (ALT, CTRL, SHIFT, ESC)문자, 한글은 가져올수 없다.
+  
+keyup() : 선택한 요소에서 키보드에 자판을 눌렀다 떼었을 때 이벤트가 발생한다.  
+*/
+	
+	$(document).ready(function() {
+	//여러가지 걸때 on, 여러가지 나열할때는 공백!
+		$('input').on('focus mouserover', function() {
+			 $('div').css({'background-color':'yellow'});
+		});
+		
+		$('#fname').keydown(function(e) {
+	         $('p').append('keydown');
+	         console.log(e.which + " " + String.fromCharCode(e.which));
+	    });
+		
+		$('#fname').keypress(function() {
+	         $('p').append('keypress');  
+	    });
+		
+		$('#fname').keyup(function() {
+			$('p').append('keyup');
+		});
+		
+		//하나씩 주석체크
+	});
+</script>
+</head>
+<body>
+	<div>
+		<input type="text" name="id" id="fid" />
+	</div>
+
+	<button id="btn">keyboard</button>
+	<input type="text" name="id" id="fname" />
+	<p></p>
+</body>
+</html>

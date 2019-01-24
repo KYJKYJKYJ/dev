@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery008_addClass</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<style type="text/css">
+div {
+	width: 100px;
+	height: 100px;
+	background-color: red;
+	border: 1px solid black;
+}
+
+.wrap {
+	background-color: blue;
+}
+</style>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('button:nth-of-type(1)').click(function() {
+			$('div').addClass('wrap'); // 선택자가 id로 지정되어 있을 때는 동적이 안됨, class 형태로 선언되야지 가능하다..
+			//addClass **
+		});
+		
+		$('button:nth-of-type(2)').click(function() {
+			$('div').removeClass('wrap');
+		});
+		
+		$('button:nth-of-type(3)').click(function() {
+			$('div').toggleClass('wrap'); // 클래스를 작동시켰다가 제거했다가를 반복해주는 toggle
+		});
+	});
+</script>
+</head>
+<body>
+	<button>commit</button>
+	<button>reset</button>
+	<button>toggle</button>
+	<div>&nbsp;</div>
+</body>
+</html>

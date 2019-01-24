@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+/*
+ * 마우스이벤트
+ 1 click() : 선택한 요소를 클릭했을때 이벤트 발생
+ 2 dbclick() : 선택한 요소를 두번 클릭했을때 이벤트 발생
+ 3 mouseout() :선택한 요소의 영역에서 마우스가 벗어났을때
+       이벤트 발생
+ 4 mouseover() : 선택한 요소의 영역에서 마우스를 올렸을때
+       이벤트 발생
+ 5 hover() : 선택한 요소에 마우스를 올렸을때 벗어났을때
+       이벤트발생
+ 6 mousedown( ) : 선택한 요소에서 마우스버튼을 눌렀을때
+       이벤트 발생
+ 7 mouseup() : 선택한 요소에서 마우스 버튼을 눌렀다 떼었을때
+       이벤트 발생
+ 8 mouseenter( ) : 선택한 요소 범위내에서 마우스를 올렸을때
+       이벤트 발생
+ 9 mouseleave( ) : 선택한 요소 범위 내에서 마우스가 벗어났을때
+       이벤트 발생
+ 10 mousemove(): 선택한 요소 범위 내에서 마우스를 움직였을때
+       이벤트 발생            
+ */
+$(document).ready(function() {
+	$('a').click(function() {
+		$('div').css({'border':'1px solid black'});
+		return false; // 기본이벤트 차단 및 전파 막음 (제이쿼리에서만)
+	})
+});
+</script>
+</head>
+<body>
+<div id="wrap">
+	<a href="www.naver.com">네이버</a>
+</div>
+</body>
+</html>

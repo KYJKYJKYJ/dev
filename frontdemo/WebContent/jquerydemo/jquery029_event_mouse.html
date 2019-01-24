@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+/* 
+ 	mouseup : 해당요소에서 마우스를 눌렀다 땠을때 발생
+ 	mousedown : 해당요소에서 마우스를 눌럿을 때 발생
+ */
+ 
+ $(document).ready(function() {
+	/*  $('div').mousedown(function() {
+		 alert('mousedown');
+	 }); */
+	 
+	 $('div').mouseup(function() {
+		 alert('mouseup');
+	 });
+ });
+</script>
+<style type="text/css">
+div {
+	width: 100px;
+	height: 200px;
+	border: 1px solid black;
+}
+</style>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

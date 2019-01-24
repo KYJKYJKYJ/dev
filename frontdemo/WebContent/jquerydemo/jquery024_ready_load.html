@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	/*
+		로딩이벤트
+		1. load() : 선택한 이미지 또는 프레임요소에 연동된 소스가 로딩이 완료된 후 이벤트가 발생
+		2. ready() : 지정한 HTML문서 객체가 로딩이 완료된 후 이벤트가 발생
+	*/
+	
+	$('iframe').load(function() {
+		$('#wrap').append('<p>로딩완료</p>');
+	});
+		
+	$('#wrap').append('<p>레디완료</p>');
+});
+</script>
+</head>
+<body>
+	<div id="wrap"></div>
+	<iframe src="jquery023_wrap.html"
+	width="300" height="300"></iframe>
+</body>
+</html>

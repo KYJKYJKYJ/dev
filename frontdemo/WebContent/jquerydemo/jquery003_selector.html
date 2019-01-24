@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery003_selector</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('button').parent().css({ // 부모 요소 지정시 parent()
+			'width' : '200px',
+			'height' : '200px',
+			'border' : '1px solid black'
+		});
+		
+		$('ul').children().css({ // 자식 요소 지정시 children()
+			'color' : 'red'
+		});
+		
+		$('ul').prev().css({ // ul요소의 이전 이웃요소 지정시 prev()
+			'background-color' : 'yellow'
+		});
+		
+		$('ul').next().css({ // ul요소의 이전 이웃요소 지정시 prev()
+			'background-color' : 'aqua'
+		});
+		
+		$('li:even').css({ // li 요소들 중에서 짝수요소만, 인덱스는 0부터 시작
+			'border' : '2px solid black'
+		});
+		
+		$('li:nth-child(even)').css({ // li 요소들 중에서 짝수요소만, 인덱스는 1부터 시작
+			'border' : '2px solid green'
+		});
+	});
+</script>
+</head>
+<body>
+	<div id='wrap'>
+		<button id="btn">click</button>
+		<ul>
+			<li>list1</li>
+			<li>list2</li>
+			<li>list3</li>
+		</ul>
+		<p>line</p>
+	</div>
+</body>
+</html>

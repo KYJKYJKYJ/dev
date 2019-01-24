@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>css_021_float</title>
+<style type="text/css">
+/*
+ float(플로트): 
+ 1 플로트는 박스의 위치를 부모요소의 안에서 왼쪽 또는 오른쪽으로 
+      이동시키는 기능이다.
+ 2 플로트가 지정된 박스는 문서의 일반적인 흐름(배치해둔 순서)에 영향을 받지 않으면서
+    이동된 위치에 떠 있다.**
+    
+ inline
+ 둥 떠있지만 다른 요소가 그 자리 침범 불가, 그 자리 유지됨
+ 항목의 폭, 높이 지정 불가
+ 위아래 마진 지정 불가
+ 소스코드상 줄바꿈 글자가 공백으로 표시됨
+ 
+ float
+ 사이 간격이 인라인은 생기는데 그게 없음
+ 
+ 둘의 차이?
+ float는 공백없이 가로로 나란히 정렬됨
+ inline은 공백 한칸 생성 후 가로로 나란히 정렬
+*/
+
+.wrap{background-color: gray;}
+div.wrap div {width: 100px; height: 100px; border: 1px solid black;}
+.box1{background-color: red; float: left;}
+.box2{background-color: green; float: left;}
+.box3{background-color: blue; float: left;}
+.wrap span{float: right;}
+.other{/*float 제거*/ clear: both;}
+img{float: left; margin-right: 20px;}
+/* inherit는 상속인데, 부모 속성값을 그대로 물려받아서 자신한테 적용함 */
+</style>
+</head>
+<body>
+ <div class="wrap">
+      &nbsp;
+      <div class="box1"></div>
+      <div class="box2"></div>
+      <div class="box3"></div>
+      <span>inline</span>
+   </div>
+
+   <div class="other" style="background-color: yellow; height: 500px">
+      <img src="images/aa.jpg" width="200" height="300" alt="영화배우" />
+      <p>연말 미국 금리 인상 전망은 압박요인 (서울=연합뉴스) 최윤정 기자 = 한국은행 기준금리가 사상 최저 수준인
+         현재의 연 1.25%로 동결됐다. 한국은행은 19일 오전 이주열 총재 주재로 금융통화위원회를 열어 기준금리를 연 1.25%로
+         동결했다. 한은 기준금리는 작년 6월 0.25%포인트 내린 이후 이달까지 열린 13차례의 금통위에서 계속 같은 수준에
+         머물렀다. 한은은 지난 6월 금리 인상 가능성을 시사했지만 이후 세 차례 금통위에서 연거푸 동결 결정을 내렸다. 반도체 수출
+         주도로 경제 성장세는 확대됐지만, 북한 리스크와 사드(고고도미사일방어체계·THAAD) 보복에 발목이 잡혔다. 한은은
+         지난번(8월) 금통위에서 국내 경제가 양호한 성장세를 이어갈 것으로 보이지만 지정학적 리스크 등으로 인해 성장 경로
+         불확실성이 크다고 진단했다. 연말 미국 금리 인상 전망은 압박요인 (서울=연합뉴스) 최윤정 기자 = 한국은행 기준금리가 사상
+         최저 수준인 현재의 연 1.25%로 동결됐다. 한국은행은 19일 오전 이주열 총재 주재로 금융통화위원회를 열어 기준금리를 연
+         1.25%로 동결했다. 한은 기준금리는 작년 6월 0.25%포인트 내린 이후 이달까지 열린 13차례의 금통위에서 계속 같은
+         수준에 머물렀다. 한은은 지난 6월 금리 인상 가능성을 시사했지만 이후 세 차례 금통위에서 연거푸 동결 결정을 내렸다.
+
+         반도체 수출 주도로 경제 성장세는 확대됐지만, 북한 리스크와 사드(고고도미사일방어체계·THAAD) 보복에 발목이 잡혔다.
+
+         한은은 지난번(8월) 금통위에서 국내 경제가 양호한 성장세를 이어갈 것으로 보이지만 지정학적 리스크 등으로 인해 성장 경로
+         불확실성이 크다고 진단했다.</p>
+      <div class="box4">This is a demonstration of how different
+         stylesheets can change the layout of your HTML page. You can change
+         the layout of this page by selecting different stylesheets in the
+         menu, or by selecting one of the following links: This is a
+         demonstration of how different stylesheets can change the layout of
+         your HTML page. You can change the layout of this page by selecting
+         different stylesheets in the menu, or by selecting one of the
+         following links: This is a demonstration of how different stylesheets
+         can change the layout of your HTML page. You can change the layout of
+         this page by selecting different stylesheets in the menu, or by
+         selecting one of the following links: This is a demonstration of how
+         different stylesheets can change the layout of your HTML page. You
+         can change the layout of this page by selecting different stylesheets
+         in the menu, or by selecting one of the following links: This is a
+         demonstration of how different stylesheets can change the layout of
+         your HTML page. You can change the layout of this page by selecting
+         different stylesheets in the menu, or by selecting one of the
+         following links:</div>
+   </div>
+</body>
+</html>

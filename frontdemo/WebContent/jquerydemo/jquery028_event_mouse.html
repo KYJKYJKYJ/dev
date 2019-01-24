@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style type="text/css">
+div {
+   width: 150px;
+   height: 100px;
+   border: 1px solid black;
+   margin: 10px;
+   float: left;
+   padding: 30px;
+   text-align: center;
+   background-color: lightgray;
+}
+
+h3 {
+   background-color: white;
+}
+</style>
+<title>jquery028_event_mouse</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+/*
+mouseover와 mouseenter : 해당 요소에 마우스가 올라가는 것을 감지한다.
+mouseover: 해당 요소의 자식요소까지 들어가도 감지된다.
+mouseenter : 해당 요소의 자식요소에 들어가면 감지가 안된다.
+
+mouseout와 mouseleave : 해당 요소에서 마우스가 벗어난 것을 감지한다.
+mouseout : 해당 요소의 자식요소를 벗어나도 감지가 된다.
+mouseleave: 해당 요소의 자식요소를 벗어났을때는 감지가 안된다.
+
+*/
+   $(document).ready(function() {
+      var x = 0;
+      var y = 0;
+      var z = 0;
+   
+      $('div.over').mouseover(function() {
+		$(".over span").text(x += 1);
+	  });
+      
+      $('div.enter').mouseenter(function() {
+  		$(".enter span").text(y += 1);
+  	  });
+      
+      $("div.move").mousemove(function(e) {
+    	 $('.move span').text("x=" + e.pageX + ",y=" + e.pageY); 
+      });
+   });
+</script>
+</head>
+<body>
+<div class="over">
+      <h3>
+         Mouseover event triggered:<span></span>
+      </h3>
+   </div>
+
+   <div class="enter">
+      <h3>
+         Mouseenter event triggered: <span></span>
+      </h3>
+   </div>
+
+   <div class="move">
+      <h3>
+         Mousemove event triggered: <span></span>
+      </h3>
+   </div>
+</body>
+</html>

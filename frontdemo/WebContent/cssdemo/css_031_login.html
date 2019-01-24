@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>css_031_login</title>
+<style type="text/css">
+ * {
+   margin: 0;
+   padding: 0;
+   border: 0;
+}
+
+body { 
+   margin-left: 50px;
+}
+
+.loginMenu {
+	width: 278px;
+	height: 98px;
+	border: 1px solid #00B3DC;
+	position: relative; /* 이걸 안해주면 body를 기준으로 맞춰지므로 주의! */
+}
+
+.loginMenu * {
+	position: absolute; /* 부모요소의 위치를 따라간다 */
+	left: 0;
+	top: 0;
+}
+
+.loginMenu #id { /* input 요소는 인라인이지만 블록처럼 크기 지정이 가능하다 */
+	width: 150px;
+	height: 20px;
+	left: 20px;
+	top: 10px;
+	border: 1px solid #00BFFF;
+}
+
+.loginMenu #password {
+   width: 150px;
+   height: 20px;
+   left: 20px;
+   top: 38px;
+   border: 1px solid #00BFFF;
+}
+
+.loginMenu #remember{
+   width: 14px;
+   height: 14px;
+   left: 178px;
+   top: 13px;
+}
+
+.loginMenu label {
+   width: 74px;
+   height: 15px;
+   left: 200px;
+   top:12px;
+   font: 12px Arial;
+}
+
+.loginMenu #loginBtn{
+   width: 60px;
+   height: 20px;
+   left: 178px;
+   top: 38px;
+}
+
+.loginMenu legend{
+   text-indent: -300px;
+   visibility: hidden;
+   font-size:0;
+   width:0;
+   height:0;
+}
+
+.loginMenu span {
+   width:70px;
+   height:14px;
+   left: 100px;
+   top: 70px;
+
+}
+
+
+.loginMenu span a {
+   font-size: 14px;
+   color: #00BFFF;
+   text-decoration: none;
+}
+
+.loginMenu span a:hover{
+   text-align: center;
+   font-weight: bold;
+   letter-spacing: -1px; /*문자사이의 간격 결정  */
+   color: black;
+   border-bottom: 2px solid black;
+}
+
+
+
+
+</style>
+</head>
+<body>
+<div id="wrap">
+      <form method="post" action="#">
+         <fieldset class="loginMenu">
+            <legend class="hidden"> 로그인 </legend>
+            <input type="text" id="id" name="id" tabindex="1" title="아이디입력"
+               accesskey="i" placeholder="아이디 입력" /> 
+               <input type="password" id="password"
+               name="password" tabindex="2" title="비밀번호입력" accesskey="p" placeholder="비밀번호 입력" /> 
+               <input    type="checkbox" id="remember" tabindex="3" name="remember"
+               accesskey="r" />
+                <label for="remember">아이디 저장</label>
+                 <input type="image" id="loginBtn" src="images/signin.gif" accesskey="l"
+               tabindex="4" /> 
+               <span><a href="#">회원가입</a></span>
+         </fieldset>
+
+      </form>
+   </div>
+</body>
+</html>

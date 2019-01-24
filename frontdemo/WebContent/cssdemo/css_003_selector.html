@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>css_003_selector</title>
+<style type="text/css">
+	/* body h1 : body에서 하위요소 h1에 적용하라 (공백은 하위 단계 표시할 때) */
+	body h1{color: red;} /* 우선순위 : body 0001 + h1 0001 = 0002 */
+	h1{color: red;} /* 0001 */
+	h1, h2{color: blue;} /* 각각 적용되는 것이므로 각각 0001 */
+	h1.blue{color: red;} /* 0011 */
+	#d1{color: red;} /* 0100 */
+	#d1.blue{color: red;} /* 0110 */
+	#d1.blue p{color: red;} /* 0111 */
+	
+	p{color: blue !important} /* 우선순위 계산 전체를 무시하고 적용하는 최우선순위 키워드 !important */ /* 남용하면 안됨 */
+	/* 우선순위가 클수록 적용됨 */
+</style>
+</head>
+<body>
+<h1>title1</h1>
+<div>
+	<div>
+		<h2>title2</h2>
+	</div>
+</div>
+<p>우선순위는 요소들에 적용할 스타일이 중복될 때 적용되는 스타일을 계산하는 방법이다.</p>
+
+<!-- 1000 -->
+<p style="color: green">요소들에 스타일을 적용하기 위해서는 선택자를 지정해서 설정할 수 있다.</p>
+</body>
+</html>

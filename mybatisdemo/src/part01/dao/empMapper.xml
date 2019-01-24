@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="emp">
+
+<!-- 모든 mapper엔 namespace가 필요하다 -->
+  <select id="all" resultType="part01.dto.EmployeesDTO"> <!-- 접근 할 수 있게하는 id 값  -->
+    select * from employees
+    order by employee_id <!-- 세미콜론 찍지 않음 -->
+    <!-- 쿼리 결과문의 각 컬럼 값을 resultType에 설정한 DTO에 저장함 -->
+  </select>
+  
+  <!-- result type이 int 면 java.lang.Integer 처럼 패키지 명을 다 써주어야함 -->
+  <select id="cnt" resultType="java.lang.Integer"> <!-- 접근 할 수 있게하는 id 값 -->
+    select count(*) from employees <!-- 세미콜론 찍지 않음 -->
+    <!-- 쿼리 결과문의 각 컬럼 값을 resultType에 설정한 DTO에 저장함 -->
+  </select>
+  
+  
+  <!-- 이름값 받아서 찾기 메소드 -->
+  <select id = "search"
+  	parameterType="java.lang.String"
+  	resultType="part01.dto.EmployeesDTO">
+  												<!-- mybatis에서는 수직바로 문장을 연결함 (jdbc api에서의 + 역할) -->
+  	select * from employees where lower(first_name) like '%' || lower(#{first_name}) || '%'
+  	<!-- 파라미터 값 받아서 처리할때 lower #{} 부분의 가변 변수는 아무 이름이나 주어도 사실 상관은 없다. 하지만 컬럼명과 맞추는 것이 보편적** -->
+  	
+  </select>
+  
+  <!-- id값 받아서 출력 -->	
+  <select id = "num" 
+    parameterType="java.lang.Integer"
+    resultType="part01.dto.EmployeesDTO">
+  	
+  	select * from employees where employee_id = #{employee_id}	
+  	<!-- 파라미터 값 받아서 처리할때 lower #{} 부분의 가변 변수는 아무 이름이나 주어도 사실 상관은 없다. 하지만 컬럼명과 맞추는 것이 보편적** -->
+  </select>
+  
+  <select id = "year"
+   parameterType="java.lang.Integer"
+   resultType="part01.dto.EmployeesDTO">
+   
+    <!-- select * from employees where to_char(hire_date, 'yyyy') = #{hire_date} -->
+    <!-- to_char 방식에서 자동 형변환이 일어남 (뒤에 hire_date) 근데 행이 한개만 있을 경우엔 '' 로 감싸주어야함  -->
+    
+    select * from employees
+    	 where hire_date between '2007-01-01' and '2007-12-31'
+    <!-- 위 방법이 to_char보다 속도가 빨라 권장됨 -->    
+  </select>
+   
+  <select id = "dtoList"
+   parameterType="part01.dto.EmployeesDTO"
+   resultType="part01.dto.EmployeesDTO">
+  select first_name, hire_date
+  from employees
+  where first_name like '%' || #{first_name} || '%'
+  and salary >= #{salary}
+  <!-- 파라미터가 여러개일 경우 그냥 DTO선언 -->
+  <!-- 이 때 변수의 이름은 dto에서 가져오기 때문에 컬럼과 이름이 같아야함 -->
+  </select> 
+  
+  <select id="moneyList"
+   parameterType="java.util.HashMap"
+   resultType="part01.dto.EmployeesDTO">
+  select * from employees
+  <!-- 문자열 그대로 저장하게 해주는 CDATA 파싱하지 않는 문자 데이터, 컬럼이랑 다른 매개변수를 사용할 때 사용하는 듯 함 -->
+  <![CDATA[ 
+  where salary >= #{losalary} and salary <= #{hisalary}
+  ]]>
+  </select>
+  
+  <select id="dataMap"
+   resultType="java.util.HashMap">
+   select max(salary) high, min(salary) low
+   from employees  
+   </select>
+   <!-- max(salary) high, min(salary) low 선언되는 컬럼명의 이름을 정해준 형태! -->
+</mapper>

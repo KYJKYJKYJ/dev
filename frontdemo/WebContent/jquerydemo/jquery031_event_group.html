@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		/* $('h1 a').on('mouseover focus', function() {
+			$(this).css({'background-color':'red'});
+		});
+		
+		$('h1 a').on('mouseout blur', function() { //focus의 반대개념 blur
+			$(this).css({'background-color':'blue'});
+		}); */
+		
+		$('h1 a').on({'mouseover focus' : function() {
+			$(this).css({'background-color':'red'});
+		} , 'mouseout blur' : function() {
+			$(this).css({'background-color':'blue'});
+		}
+		});
+		
+		/* $('h2 a').on('mouseover focus', function() {
+			$(this).css({'color':'red'});
+		}); //요소를 추가하기 전에 a에 이벤트를 걸어주면 이벤트가 발생되지 않는다. (정적) */
+		
+		 $(document).on('mouseover focus', 'h2 a', function() {
+			$(this).css({'color':'red'});
+		 }); //동적으로 이벤트를 걸어 주었음 (요소 생성 전에도 이벤트를 걸어야 하는 경우에 사용)
+		
+		$('h2').append('<a href="#">new element</a>'); //a 요소 추가
+		
+	});
+</script>
+</head>
+<body>
+<h1>
+   <a href="#">버튼</a>
+   </h1>
+   <h2></h2>
+
+   <h3>
+      <a href="#">하위요소1</a> <a href="#">하위요소2</a>
+   </h3>
+
+   <button id="btn">one</button>
+   <span>0</span>
+
+   <button id="clear">이벤트 제거</button>
+</body>
+</html>

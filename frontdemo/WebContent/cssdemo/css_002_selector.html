@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>css_002_selector</title>
+<style type="text/css">
+/* 요소에 선택자를 지정해서 스타일을 적용하는데 선택자는 우선순위를 가지고 있다. */
+
+/* 선택자 우선순위 */
+/* 0001 */
+	p {
+		color:red;
+		font-size:30px;
+	}
+	
+	p {
+		background-color: yellow;
+		color: blue;
+	}
+	/* 우선 순위가 같을 경우 동일한 스타일은 나중에 처리한 스타일이 적용됨 */
+	
+	/* 0010 */
+	/* 클래스로 적용하는게 우선순위가 더 높으므로 order클래스는 green color 요소가 적용됨 */
+	.order {
+		color: green;
+	}
+	
+	/* 0100 */
+	/* 아이디로 적용하는게 우선순위가 높으므로 orange color 요소가 적용됨*/
+	#unit {
+		color: orange;
+	}
+</style>
+</head>
+<body>
+<p>test1</p>
+							<!-- 1000 --> <!-- 인라인 요소가 우선순위가 가장 높음 -->
+<p class="order" id="unit" style="color: purple">test2</p>
+<p>test3</p>
+<p class="order">test4</p>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery015_before_after</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('button').click(function(){
+			//일치하는 요소 집합의 각 요소 앞에 매개 변수로 지정된 콘텐츠를 삽입합니다.
+			//$('기존요소').before('추가요소');
+			$('#myList').before('<li id="bNode">before</li>'); //홀따옴표 쌍따옴표 주의
+			
+			//일치하는 요소 집합의 각 요소 뒤에 매개 변수로 지정된 콘텐츠를 삽입합니다.
+			//$('기존요소').after('추가요소');
+			$('#myList').after('<li id="aNode">after</li>');
+			
+			//일치하는 요소 집합의 모든 요소를 ​​대상 앞에 삽입합니다.
+			//$('추가요소').insertBefore('기존요소');
+			$('<li>insertBefore</li>').insertBefore('#myList');
+			
+			//대상 다음에 일치하는 요소 집합의 모든 요소를 ​​삽입합니다.
+			//$('추가요소').insertAfter('기존요소');
+			$('<li>insertAfter</li>').insertAfter('#myList');
+			
+			//이벤트 연결을 해제한다.
+			$(this).off(); //버튼 한번 누르고 나서는 이벤트가 더이상 실행되지않는다.
+			
+		});
+	});
+</script>
+</head>
+<body>
+	<button>commit</button>
+	<ul>
+		<li id="myList">content</li>
+	</ul>
+</body>
+</html>

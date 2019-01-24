@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>html_014_table</title>
+
+<!-- 표 스타일은 위쪽 css로 준다. -->
+<style type="text/css">
+table {
+   background-color: yellow;
+   width: 500px;
+}
+/* 여러가지를 한번에 주고 싶으면 ,로 나누어서 주면됨 */
+table /* 제일 밖에 있는 테두리 */ , th, td {
+   border-width: 1px;
+   border-style: solid;
+   border-collapse: collapse; /* 그냥 일반 표 형식으로 나타냄 */
+}
+</style>
+
+</head>
+<body>
+   <table>
+      <thead>
+         <tr>
+            <th rowspan="2">교실</th>
+            <th colspan="2" id="s">수강생</th>
+         </tr>
+         <tr>
+            <th id="m">남</th>
+            <th id="w">여</th>
+         </tr>
+      </thead>
+         <tfoot>
+         <tr>
+         	<th>합계</th>
+         	<td>43</td>
+         	<td>15</td>
+         </tr>
+         </tfoot>
+         
+         <tbody>
+         <tr>
+         	<th id="L1">L1반</th>
+         	<!-- 수강생 남 L1반 10 -->
+         	<td headers="s m L1">10</td>
+         	<!-- 수강생 여 L1반 5 -->
+         	<td headers="s w L1">5</td>
+         </tr>
+         
+         <tr>
+         	<th id="L2">L2반</th>
+         	<!-- 수강생 남 20 -->
+         	<td headers="s m">20</td>
+         	<!-- 수강생 여 2 -->
+         	<td headers="s w">2</td>
+         </tbody>
+   </table>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery037_animate</title>
+<style type="text/css">
+  div{
+    width:100px;
+    height:100px;
+    border:1px solid black;
+    background-color: red   
+    
+  }
+  
+  p{
+    width:100px;
+    height:100px;
+    border:1px solid black;
+    background-color:blue; 
+  }
+</style>
+
+<script
+   src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+/*
+ * queue() : 큐에 저장된 함수를 반환하거나 ,큐에 함수를 저장하고 저장한 이후에 적용된 메서드는 모두제거한다.
+   clearQueue() : clearQueue()이후의 애니메이션만 수행한다.
+  
+   $(요소선택).queue(); 선택한 요소의 큐에 대기 중인 메서드 리턴한다.
+   $(요소선택).queue(function(){}); 선택한 요소의 큐에 함수를
+            저장한다.  이후 queue()메소드에 저장된 애니메이션은 연결이
+            끊어진다.
+   $(요소선택).clearQueue(); clearQueue()이후의 애니메이션만 수행한다.
+   
+ */
+   $(document).ready(function() {
+      $('div').animate({height:'300px'},'slow').animate({width:'300px'},'slow');
+      
+      //queue 에 콜백함수를 등록한다.
+      //이후의 queue()에 저장된 애니메이션은 수행하지 않는다.
+      $('div').queue(function(){});           
+      $('div').animate({height:'100px'},'slow').animate({width:'100px'},'slow');     
+      
+      //5 (큐 길이) (p에 들어간 애니메이션 갯수)(2+1+2)
+      $('span:nth-of-type(1)').text($('div').queue().length);    
+      $('p').animate({height:'300px', marginLeft:'100px'},'slow').animate({width:'300px'},'slow');
+      
+      //2
+      $('span:nth-of-type(2)').text($('p').queue().length);     
+      $('p').clearQueue(); //클리어큐는 이미 실행중인 애니메이션을 정지시키면서 삭제하는 것이 아님에 유의하자.
+      					   //마친 후에 큐가 지워지고 큐가 지워지면서 실행이 끝남
+      $('p').animate({height:'30px'},'slow');
+      
+      //1
+      $('span:nth-of-type(2)').text($('p').queue().length);
+      
+      
+   });
+</script>
+</head>
+<body>
+   <span>0</span>
+   <div>&nbsp;</div>
+
+   <span>0</span>
+   <p>&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="per">
+	<select id="all" resultType="part04.dto.MemDTO">
+		select * from mem order by num
+	</select>
+	
+	<delete id="multiDel">
+       delete from mem   <!-- 구분지어줄때 , 넣어줘야한다.(separator=",") -->
+       where num in(
+       <foreach collection="array" item="element" separator=",">
+       <!-- foreach 안에 속성 open="(" close=")"  를 추가하면 in () 에서 괄호 안해주어도 됨-->
+       <!-- #{element} = ${element} 상관없다 -->
+          #{element}
+       </foreach>
+       )
+    </delete> 	
+</mapper>
