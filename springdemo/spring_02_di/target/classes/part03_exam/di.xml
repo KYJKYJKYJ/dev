@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+<!-- 
+    User user=new User("kim","a1234");
+    ServiceImp svc=new ServiceImp(user);
+ -->
+
+ <bean id="idpass" class="part03_exam.User">
+ 	<constructor-arg value="kim" />
+ 	<constructor-arg value="a1234" />
+ </bean>
+ 
+ <!-- ref : reference, 지정한 id(혹은 name)를 갖는 bean의 생성자의 인자로 넘겨주겠다는 의미  -->
+ <bean id="svc" class="part03_exam.ServiceImp">
+ 	<constructor-arg ref="idpass" />
+ </bean>
+ 
+</beans>

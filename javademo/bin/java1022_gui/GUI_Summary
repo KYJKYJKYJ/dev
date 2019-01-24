@@ -1,0 +1,128 @@
+컨테이너 : 다른 컴포넌트를 포함할 수 있는 GUI 컴포넌트 (java.awt.Container 상속)
+다른 컨테이너에 포함 될 수 있으며 JPanel, JFrame, JApplet, JDialog, JWindow가 있음
+이 중에 JFrame, JDialog, JApplet은 독립적으로 하면에 출력이 가능한 최상위 컨테이너
+
+컴포넌트 : 컨테이너에 포함되어야 화면에 출력 될 수 있는 GUI객체
+javax.swing.JComponent의 상속을 받아야됨
+JButton, JLabel, JTextField, JList, JTable, JToolbar 등이 속함
+
+모든 컴포넌트의 생성은 객체 생성을 이용한다.
+ex) JMenu fileMenu = new JMenu("파일");
+
+AWT와 SWING
+AWT - 윈도우 같은 운영체제의 컴포넌트를 끌어 쓰기 때문에 운영체제에 종속적임 (운영체제에 따라 작동이 다를 수 있음)
+-> 운영체제와 프로그램 사이의 연결 라이브러리, 운영체제에 따라 프로그램의 모양이 조금씩 달라질 수 있다.
+
+SWING - 윈도우 같은 운영체제의 컴포넌트가 아닌 독립적인 컴포넌트를 사용하므로 운영체제 독립적임 (운영체제에 따라 작동이 동일함)
+-> AWT의 모든 기능 및 고급 컴포넌트를 사용할 수 있음
+-> 모든 클래스는 J로 시작함
+-> AWT와 다르게 Border의 모양에 관여가 가능함, 크기 조절또한 AWT와 다르게 제어가 쉽게 가능하다
+-> 버튼을 텍스트가 아닌 이미지로 표시 가능
+
+Frame
+모든 컴포넌트를 담는 최상위 GUI 컨테이너
+JFrame을 상속받아 구현한다. 컴포넌트가 화면에 보이려면 스윙 프레임에 올라가야함
+
+Frame 만들기
+1. main 메소드에 JFrame의 객체를 생성하는 경우 : 융통성과 확장성이 결여되므로 잘 사용되지 않는다.
+2. JFrame 클래스를 상속받는 클래스를 작성하여 프레임을 만드는 법 : 추가적인 클래스를 사용해야 하나 확장과 수정이 용이하다. **
+2번 방법을 많이 사용한다.
+
+Panel
+컴포넌트들의 배열과 비슷한 개념
+비슷한 유형의 컴포넌트를 그룹으로 묶어서 관리할 수 있음
+
+JTable
+표라고 생각하면 될 듯 하다.
+
+Default--Model
+콤보박스나 테이블을 생성자에 넣어주면 추가, 수정이 가능하게 해줌
+
+JCombobox
+Item들을 묶은 것, Item -> 목록에서 선택하는 것
+즉, 펼쳐지는 선택목록
+
+프레임 생성후 컴포넌트 추가
+프레임.add(Component comp);
+
+크기 설정
+프레임.setSize(int x, int y);
+
+컨테이너 보이기
+프레임.setVisible(true); -> 기본적으로 false로 되어 있어 출력이 되지 않는다.
+
+주의할 점
+화면에 출력하려면 main 메소드에서 프레임 객체를 생성해주어야 한다.
+그런데 접근할 용도로 사용하지 않으므로 new 키워드만 선언해주어도 가능한다.
+ex) new JFrames();
+
+배치관리자
+FlowLayout : 컴포넌트를 컨테이너의 왼쪽부터 차례대로 하나씩 채우고 오른쪽 끝에 다다르면 다음 줄로 (왼쪽부터 오른쪽으로 채움)
+BorderLayout : 프레임의 영역을 동, 서, 남, 북, 중앙으로 다섯 개의 영역으로 나누어 각 위치에 컴포넌트를 배치
+(BorderLayout.NORTH ...)
+GridLayout : 주어진 열과 행의 크기로 컨테이너 영역을 나누고 동등한 크기의 각 셀에 컴포넌트를 하나씩 배치
+(GridLayout(가로 줄 수, 세로 줄 수))
+CardLayout : 카드를 겹쳐 놓은 방식으로 컴포넌트를 배치
+GridBagLayout : 기본적으로 GridLayout와 비슷. 하나의 컴포넌트가 하나의 셀이 아닌 여러 셀을 차지 가능
+
+각 컨테이너의 기본 배치 관리자
+Window, Frame, JFrame, Dialog, JDialog : BorderLayout
+Panel, JPanel : FlowLayout
+Applet, JApplet : FlowLayout
+
+만약 원하는 레이아웃으로 변경 하고 싶을 경우
+setLayout(LayoutManager lm);
+ex) setLayout(new GridLayout(2, 1));
+
+원하는 위치에 설정 하는 방법
+컴포넌트.setLocation(int x, int y);
+
+dispose vs exit
+프로그램을 종료시키는 방법 : dispose, exit
+exit는 응용프로그램을 종료시키는 방법으로, 응용프로그램에서 실행된 모든 프레임을 닫고 응용프로그램을 종료시킨다.
+dispose는 해당 프레임을 닫으며 다른 프레임이 활성화 되어 있으면 응용프로그램을 종료시키지 않음
+
+텍스트 컴포넌트
+JTextField : 한줄 짜리 텍스트 입력용 컴포넌트
+JTextArea : 여러 줄 텍스트 입력용 컴포넌트
+JPasswordField : 암호를 입력할 때 편리하게 사용할 수 있음, 값을 *로 표시함
+
+스크롤
+JScrollPane을 객체 생성해주면 알아서 스크롤이 달림
+
+메뉴 컴포넌트
+JMenuBar : JMenu가 올라가는 메뉴 바
+JMenu : 메뉴버튼을 눌렀을 때 서브 메뉴가 존재 할 경우 사용하는 컴포넌트
+JMenuItem : 메뉴버튼을 눌렀을 때 연결되는 경우 사용하는 컴포넌트
+
+메뉴 생성
+JMenuItem을 생성하고 JMenu에 추가한 후, JMenu를 JMenuBar에 추가하여 Frame에  추가함
+North에 배치하는 것이 아닌 메뉴가 들어갈 레이아웃이 따로 존재함
+프레임.setJMenuBar(JMenuBar); -> 메뉴 추가 방법
+
+이벤트
+이벤트란 사용자가 UI컴포넌트에 대해 취하는 행위로 인해서 발생하는 하나의 사건을 뜻한다.
+ActionEvent : 컴포넌트가 활성화 될 때 발생하는 이벤트
+ContainerEvent : 컨테이너에 컴포넌트가 추가/삭제될 시 발생하는 이벤트
+FocusEvent : 컴포넌트에 포커스가 들어 왔을 때 발생하는 이벤트
+ItemEvent : 리스트박스와 같은 컴포넌트에서 목록을 선택할  때 발생하는 이벤트
+keyEvent : 키보드 입력에 의해서 발생하는 이벤트
+MouseEvent : 마우스의 움직임에 의해 발생하는 이벤트
+WindowEvent : 윈도우 열기/닫기, 활성화와 관련된 이벤트
+
+이벤트 Listener와 Adaptor의 차이
+이벤트 처리를 위해서 우리가 상속 받을 수 있는 인터페이스는 두가지가 있다.
+Listener, Adapter 두가지가 해당
+Listener : 인터페이스의 이벤트 메소드를 전부 오버라이딩 해서 사용해야함
+Adapter : 인터페이스의 이벤트 메소드 중 필요한 것만 끌어서 사용하기만 하면 됨
+
+이벤트 처리
+1. 이벤트를 발생시키는 주체 찾기
+2. 이벤트 주체의 해당 이벤트 종류 선택
+3. 이벤트 등록
+4. 이벤트 처리 핸들러 구현
+
+이벤트 처리 방법
+1. 이벤트에 대한 독립적인 클래스로 작성하는 방법
+2. 내부클래스 선언
+3. 익명클래스를 통해 즉석으로 선언 후 처리하는 방법

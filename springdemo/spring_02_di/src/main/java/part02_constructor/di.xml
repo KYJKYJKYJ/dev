@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- 생성자를 이용한 의존관계 설정 -->
+<!-- ServiceImp svc1 = new ServiceImp("홍길동") -->
+<bean id="svc1" class="part02_constructor.ServiceImp">
+	<!-- <constructor-arg>
+		<value>홍길동</value>
+	</constructor-arg> -->
+	
+	<constructor-arg value="홍길동" />	
+</bean>
+
+<!-- ServiceImp svc2 = new ServiceImp(30, "sales"); -->
+<bean id="svc2" class="part02_constructor.ServiceImp">
+	<!-- <constructor-arg type="int"> 
+	type=int 같이 아예 자료형을 명시를 해줘버리면 그 형을 선언한 부분에만 넘겨주게 됨. 오류 주의!
+		<value>30</value>
+	</constructor-arg>
+	<constructor-arg>
+		<value>sales</value>
+	</constructor-arg> -->
+	
+	<constructor-arg value="30" type="int" />
+	<constructor-arg value="sales" />
+</bean>
+
+<!-- Random ran = new Random(); -->
+<!-- ServiceImp svc3 = new ServiceImp(ran); -->
+<bean id="ran" class="java.util.Random" />
+<bean id="svc3" class="part02_constructor.ServiceImp">
+	<!-- <constructor-arg>
+		<ref bean="ran" />
+	</constructor-arg> -->
+	
+	<!-- ref : reference, 지정한 id(혹은 name)를 갖는 bean의 생성자의 인자로 넘겨주겠다는 의미  -->
+	<constructor-arg ref="ran" />
+</bean>
+
+</beans>
+	
