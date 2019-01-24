@@ -7,8 +7,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 /*
  * 컨테이너(Container)
  * 애플리케이션과 그 실행에 필요한 라이브러리, 바이너리, 구성 파일 등을 패키지로 묶어 배포하는 것
- * 1. BeanFactory - getBean()
- * 2. ApplicationContext - container 생성될  때
+ * 1. BeanFactory - getBean() 호출 할 때 Bean이 인스턴스 된다
+ * 2. ApplicationContext - container 생성될  때 (초기화 할 때)
  * 3. WebApplicationContext - was(tomcat) 실행 될 때
  * 
  *  
@@ -16,6 +16,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  *  
  *  bean : 자주 사용하는 객체를 Singleton 객체로 생성해놓고 어디서든 불러서 쓸 수 있는 것 (스프링 프레임워크가 초기화시 직접 객체를 생성해줌 (인스턴스화))
  *  협업의 기초 **
+ *  
+ *  생성된 빈에 접근하기 위한 메소드인 getBean()
  *  
  *  객체 지향 프로그래밍에서, 어떤 클래스에 속하는 각 객체를 인스턴스라 한다
  *  class : 붕어빵틀, Object : 붕어빵, Instance : 각각의 붕어빵들 (슈크림도 있을꺼고.. 탄거도 있을꺼고..)

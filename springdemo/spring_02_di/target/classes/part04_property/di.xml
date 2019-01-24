@@ -6,6 +6,11 @@
 	
 <!-- 프로퍼티를 이용한 의존 관계 설정 -->
 
+<!-- Setter Injection : <property> 태그
+		Setter 메소드를 통해 의존관계가 있는 Bean을 주입하려면 <property> 태그를 사용할 수 있다.
+ 		- ref 속성을 사용하면 Bean이름을 이용해 주입할 Bean을 찾는다.
+ 		- value 속성은 단순 값 또는 Bean이 아닌 객체를 주입할 때 사용한다. -->
+
 	<!-- ServiceImp svc1 = new ServiceImp(); -->
 	 <!-- svc1.setName("홍길동"); -->
 	 
