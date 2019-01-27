@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="drink">
+  <select id="showallDrink" resultType="dto.DrinkDTO">
+  	select * from drink order by num
+  </select>
+  
+  <select id="searchName" parameterType="java.lang.String" resultType="dto.DrinkDTO">
+  	select * from drink where upper(name) like '%' || upper(#{name}) || '%'
+  </select>
+  
+  <select id="searchPrice" parameterType="java.util.HashMap" resultType="dto.DrinkDTO">
+  <![CDATA[
+  	select * from drink where price >= #{lowPrice} and price <= #{highPrice}
+  ]]>
+  </select>
+  
+  <insert id="insertDrink" parameterType="dto.DrinkDTO">
+  	insert into drink values(drink_num_seq.nextval, #{name}, #{price}, #{alcohol})
+  </insert>
+  
+  <update id="updateDrink" parameterType="dto.DrinkDTO">
+  	update drink set price = #{price},
+  	alcohol = #{alcohol}
+  	where name = #{name}
+  </update>
+  
+  <delete id="deleteDrink" parameterType="java.lang.String">
+  	delete from drink where name = #{name}
+  </delete>
+  </mapper>
