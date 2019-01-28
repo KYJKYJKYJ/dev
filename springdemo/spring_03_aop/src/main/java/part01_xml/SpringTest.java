@@ -14,7 +14,12 @@ public class SpringTest {
 	public static void main(String[] args) {
 		ApplicationContext context = new ClassPathXmlApplicationContext("part01_xml/aop.xml");
 		Service svc = (Service) context.getBean("svc");
-		svc.prn1();
+		//svc.prn1();
+		//svc.prn1(10);
+		//svc.prn1(20, 30);
+		//svc.prn2;
+		//svc.prn3();
+		svc.prn4();
 	} // end main()
 
 } // end class

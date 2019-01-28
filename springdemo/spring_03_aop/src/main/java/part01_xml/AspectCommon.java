@@ -10,4 +10,21 @@ public class AspectCommon {
 	public void comm1() {
 		System.out.println("before");
 	}
+	
+	public void comm2() {
+		System.out.println("after");
+	}
+	
+	public void comm3(String name) {
+		System.out.println("comm3 : " + name);
+	}
+	
+	public void comm4(Exception ex) {
+		if(ex!=null) {
+			System.out.println(ex.toString());
+		} else {
+			System.out.println("wtf");
+		}
+		
+	}
 }

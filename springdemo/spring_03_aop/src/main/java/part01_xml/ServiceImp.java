@@ -27,22 +27,25 @@ public class ServiceImp implements Service {
 
    @Override
    public void prn1(int a, int b) {
-      
+	   System.out.printf("a, b: %d %d", a, b);
    }
 
    @Override
    public void prn2() {
-      
+      System.out.println("prn2");
    }
 
    @Override
    public String prn3() {
-      return null;
+	  System.out.println("prn3");
+      return "홍길동";
    }
 
    @Override
    public void prn4() {
-      
+      System.out.println("prn4");
+      String data = "abcd";
+      int num = Integer.parseInt(data);
    }
 
    @Override

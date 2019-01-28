@@ -15,11 +15,36 @@
 	<!-- Advice 설정 -->
 	<aop:config>
 		<aop:aspect ref="common">
-			<aop:before method="comm1" pointcut="execution(* part01_xml.ServiceImp.prn1())"/>
-			
+			<!-- <aop:before method="comm1" pointcut="execution(* part01_xml.ServiceImp.prn1())"/> -->
+			<!-- 실행하기 전 comm1을 먼저 시행하라 -->
 			<!-- <aop:before method="comm1" pointcut="execution(* part01_xml..ServiceImp.prn1())"/> -->
 			<!-- 이렇게 설정하면 part01_xml.test.Service, part01_xml.sample.Service 같은 형식들도 전부 영향받음 -->
-			<!-- .. 이 모든의 의미를 가짐 (자바의 *와 비슷) *는 개별임 -->
+			<!-- .. 이 모든의 의미를 가짐 (자바의 *와 비슷) *는 개별임 (인자 하나) -->
+			
+			<!-- <aop:before method="comm1" pointcut="execution(* part01_xml.ServiceImp.prn1(*))" /> -->
+			<!-- 인자 하나 일 때 수행 -->
+			
+			<!-- <aop:before method="comm1" pointcut="execution(* part01_xml.ServiceImp.prn1(*,*))" /> -->
+			<!-- 인자 두개 일 때 수행 -->
+			
+			<!-- <aop:before method="comm1" pointcut="execution(* part01_xml.ServiceImp.prn1(..))"/> -->
+			<!-- 모든 경우에 수행  (모든의 의미 : ..)-->
+			
+			<aop:pointcut expression="execution(* part01_xml.ServiceImp.prn1(..))" id="aa"/>
+			<!-- pointcut이 메소드 -->
+			<aop:before method="comm1" pointcut-ref="aa" />
+			<!-- 위 와 동일, 타겟 -->
+			
+			<aop:pointcut expression="execution(* part01_xml.ServiceImp.prn2(..))" id="bb"/>
+			<aop:after method="comm2" pointcut-ref="bb" />
+			
+			<aop:pointcut expression="execution(* part01_xml.ServiceImp.prn3(..))" id="cc" />
+			<aop:after-returning method="comm3" pointcut-ref="cc" returning="name" />
+			
+			<aop:pointcut expression="execution(* part01_xml_ServiceImp.prn4(..))" id="dd" />
+			<aop:after-throwing method="comm4" pointcut-ref="dd" throwing="ex" />
+			<!-- 핵심로직 실행 후, throwing 타입을 정해줘야함 -->
+			
 		</aop:aspect>
 	</aop:config>
 	
