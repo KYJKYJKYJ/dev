@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- [1] DataSource빈 선언 -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"
+			value="oracle.jdbc.OracleDriver" />
+		<property name="url"
+			value="jdbc:oracle:thin://@127.0.0.1:1521:xe" />
+		<property name="username" value="hr" />
+		<property name="password" value="a1234" />
+	</bean>
+
+	<!-- 2. SqlSessionFactoryBean 빈선언 -->
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!-- <property name="mapperLocations" value="classpath*:part03_template/memMapper.xml"/> -->
+
+		<!-- <property name="mapperLocations">
+			<list>
+				<value>classpath:part03_template/memMapper.xml</value>
+				<value>classpath:part04_daoSupport/memMapper.xml</value>
+			</list>
+		</property> -->
+		
+		<!-- type-alias를 이용하는경우 꼭 configuration을 이용해서 설정해야 함 -->
+		<property name="configLocation" value="classpath:config/configuration.xml"/>
+	</bean>	
+	
+
+    <!-- 3. MemDaoImp빈선언 -->
+    <bean id="dao" class="part04_daoSupport.MemDaoImp">
+      <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+    </bean>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,3 @@
+클라이언트 -> DAO -> myBatis -> jdbc API -> DB
+
+클라이언트 <- DAO <- myBatis <- jdbc API <- DB

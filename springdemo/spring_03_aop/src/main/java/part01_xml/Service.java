@@ -1,6 +1,7 @@
 package part01_xml;
 
 public interface Service {
+
 	public void prn1();
 	
 	public void prn1(int x);
@@ -14,4 +15,4 @@ public interface Service {
 	public void prn4();
 	
 	public void prn5();
-} // end interface
+}

@@ -3,49 +3,47 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 
 	<!-- Target-핵심관심사항 빈 선언 -->
-	<bean id="svc" class="part01_xml.ServiceImp" />
+	<bean id="svc" class="part01_xml.ServiceImp"/>
 	
 	<!-- Aspect-공통관심사항 빈 선언 -->
-	<bean id="common" class="part01_xml.AspectCommon" />
+	<bean id="common" class="part01_xml.AspectCommon"/>
 	
-	<!-- namespace aop 선택 -->
-	<!-- Advice 설정 -->
+	<!-- Advice설정 -->
 	<aop:config>
 		<aop:aspect ref="common">
-			<!-- <aop:before method="comm1" pointcut="execution(* part01_xml.ServiceImp.prn1())"/> -->
-			<!-- 실행하기 전 comm1을 먼저 시행하라 -->
-			<!-- <aop:before method="comm1" pointcut="execution(* part01_xml..ServiceImp.prn1())"/> -->
-			<!-- 이렇게 설정하면 part01_xml.test.Service, part01_xml.sample.Service 같은 형식들도 전부 영향받음 -->
-			<!-- .. 이 모든의 의미를 가짐 (자바의 *와 비슷) *는 개별임 (인자 하나) -->
+		<!-- *는 인자하나 prn1()안에 해당 인자값 2개면 prn1(*,*) 이렇게 해줄수 있고 모두 적용하려면 prn1(..)해줄수있다 -->
+		<!-- 패키지명이 길어서 test.dao.sample이렇게 되있으면 test..해주면 된다. 그러면 part01_xml.test.ServiceImp,  part01_xml.test.AspectCommon이나 test안에 모든 영향을 준다. -->
+			<!-- method는 공통로직구현 메소드 pointcut핵심로직구현 인자값까지써준다-->
+			<!-- *는 인자값 -->
+			<!-- ..는 모든인자값 -->
+			<!-- aop 간단한 메소드 성능검사 트랜잭션 처리(예외처리)-->
 			
-			<!-- <aop:before method="comm1" pointcut="execution(* part01_xml.ServiceImp.prn1(*))" /> -->
-			<!-- 인자 하나 일 때 수행 -->
+			<!-- <aop:before method="comm1" pointcut="execution(* part01_xml.ServiceImp.prn1())"/>
 			
-			<!-- <aop:before method="comm1" pointcut="execution(* part01_xml.ServiceImp.prn1(*,*))" /> -->
-			<!-- 인자 두개 일 때 수행 -->
+			<aop:before method="comm1" pointcut="execution(* part01_xml.ServiceImp.prn1(*))"/>
 			
-			<!-- <aop:before method="comm1" pointcut="execution(* part01_xml.ServiceImp.prn1(..))"/> -->
-			<!-- 모든 경우에 수행  (모든의 의미 : ..)-->
+			<aop:before method="comm1" pointcut="execution(* part01_xml.ServiceImp.prn1(*,*))"/> 
+			
+			<aop:before method="comm1" pointcut="execution(* part01_xml.ServiceImp.prn1(..))"/>-->
 			
 			<aop:pointcut expression="execution(* part01_xml.ServiceImp.prn1(..))" id="aa"/>
-			<!-- pointcut이 메소드 -->
-			<aop:before method="comm1" pointcut-ref="aa" />
-			<!-- 위 와 동일, 타겟 -->
+			<aop:before method="comm1" pointcut-ref="aa"/>
 			
 			<aop:pointcut expression="execution(* part01_xml.ServiceImp.prn2(..))" id="bb"/>
-			<aop:after method="comm2" pointcut-ref="bb" />
+			<aop:after method="comm2" pointcut-ref="bb"/>
 			
-			<aop:pointcut expression="execution(* part01_xml.ServiceImp.prn3(..))" id="cc" />
-			<aop:after-returning method="comm3" pointcut-ref="cc" returning="name" />
+			<aop:pointcut expression="execution(* part01_xml.ServiceImp.prn3(..))" id="cc"/>
+			<aop:after-returning method="comm3" pointcut-ref="cc" returning="name"/>
 			
-			<aop:pointcut expression="execution(* part01_xml_ServiceImp.prn4(..))" id="dd" />
-			<aop:after-throwing method="comm4" pointcut-ref="dd" throwing="ex" />
-			<!-- 핵심로직 실행 후, throwing 타입을 정해줘야함 -->
+			<aop:pointcut expression="execution(* part01_xml.ServiceImp.prn4(..))" id="dd"/>
+			<aop:after-throwing method="comm4" pointcut-ref="dd" throwing="ex"/>
 			
+			<aop:pointcut expression="execution(* part01_xml.ServiceImp.prn5(..))" id="ee"/>
+			<aop:around method="comm5" pointcut-ref="ee"/>
 		</aop:aspect>
 	</aop:config>
-	
+
 </beans>

@@ -18,6 +18,7 @@ public class RegisterDAO {
 	private ResultSet rs;
 
 	private RegisterDAO() {
+	
 	}
 
 	private static RegisterDAO dao = new RegisterDAO();

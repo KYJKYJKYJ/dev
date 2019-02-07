@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<!-- 1. DataSource빈 선언 -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin://@127.0.0.1:1521:xe"/>
+		<property name="username" value="hr"/>
+		<property name="password" value="a1234"/>
+	</bean>
+	
+	<!-- 2. SqlSessionFactoryBean 선언 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<!-- <property name="mapperLocations" value="classpath:part03_template/memMapper.xml"/> -->
+		<!-- <property name="mapperLocations">
+			<list>
+				<value>classpath:part05_emp/empMapper.xml</value>
+			</list>
+		</property> -->
+		
+		<!-- configuration을 이용해서 설정해줄 경우 -->
+		<!-- configuration.xml이 반드시 필요한 경우 다음과 같이 사용(ex. type-alias를  직접적으로 사용할 때) -->
+		<property name="configLocation" value="classpath:config/configuration.xml"/>
+	</bean>
+	
+	<!-- 3. SqlSessionTemplate빈 선언 -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory"/>
+	</bean>
+	
+	<!-- 4. MemDaoImp빈 선언 -->
+	<bean id="dao" class="part05_emp.EmpDaoImp">
+		<property name="sqlSession" ref="sqlSession"/>
+	</bean>
+</beans>
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <mappers> <!-- 쿼리문을 작성해놓은 xml -->
+	<mapper resource="part03_template/memMapper.xml"/>
+	<mapper resource="part04_daoSupport/memMapper.xml"/>
+	<mapper resource="part05_emp/empMapper.xml"/>
+  </mappers>
+</configuration>

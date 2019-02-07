@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	<!-- 스프링에서 트랜잭션 처리를 위해 선언적 트랜잭션(<tx:advice>)를 이용하는 방법 -->
+	<!-- 1. DataSource빈 선언 -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin://@127.0.0.1:1521:xe"/>
+		<property name="username" value="hr"/>
+		<property name="password" value="a1234"/>
+	</bean>
+	
+	<!-- 2. SqlSessionFactoryBean 선언 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<!-- <property name="mapperLocations" value="classpath:part03_template/memMapper.xml"/> -->
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:part02/memMapper.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 3. SqlSessionTemplate빈 선언 -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory"/>
+	</bean>
+	
+	<!-- Spring Jdbc나 Mybatis를 이용해서 DB연동을 처리하는 경
+	 DataSourceTransactionManager가 트랜잭션 관리자로 사용횐다. -->
+	 
+	<!-- 4. TransactionManager빈 선언 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<!-- 여기부터 달라짐 -->
+	<!-- 5. 선언적 트랜잭션: <tx:advice>태그를 이용한 트랜잭션 처리 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="insertProcess" rollback-for="java.lang.Exception"/> <!-- name: 트랜잭션을 사용할 메소드, rollback-for: 어떤 exception이 있을 때 롤백 할 것인지 -->
+			<!-- <tx:method name="deleteProcess" rollback-for="java.lang.NullPointerException"/> --> <!-- 메소드에 따라 롤백하는 경우를 다르게 써줌 -->
+		</tx:attributes>
+	</tx:advice>
+	
+	<aop:config>
+		<!-- <aop:pointcut expression="execution(* part02.ServiceImp.insertProcess(..))" id="insp"/> -->
+		<aop:pointcut expression="execution(* part02.ServiceImp.*Process(..))" id="insp"/> <!-- Process로 끝나는 메소드를 한번에 써줄 수 있음 -->
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="insp"/>
+	</aop:config>
+	
+	<!-- 6. MemDaoImp빈 선언 -->
+	<bean id="dao" class="part02.MemDaoImp">
+		<property name="sqlSession" ref="sqlSession"/>
+	</bean>
+	
+	<!-- 7. ServiceImp빈 선언 -->
+	<bean id="svc" class="part02.ServiceImp">
+		<property name="dao" ref="dao"/>
+	</bean>
+</beans>
