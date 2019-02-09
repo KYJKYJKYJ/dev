@@ -116,4 +116,54 @@ public class BoardController {
 		
 		return "redirect:/list.sb";
 	}
+	
+	@RequestMapping(value="/update.sb", method=RequestMethod.GET)
+	public ModelAndView updateMethod(int num, int currentPage) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("dto", service.updateSelectProcess(num));
+		mav.addObject("currentPage", currentPage);
+		mav.setViewName("board/update");
+		return mav;
+	}
+	
+	@RequestMapping(value="/update.sb", method=RequestMethod.POST)
+	public ModelAndView updateProc(BoardDTO dto, int currentPage, HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		service.updateProcess(dto, request);
+		mav.addObject("currentPage", currentPage);
+		mav.setViewName("redirect:/list.sb");
+		return mav;
+	}
+	
+	@RequestMapping("/delete.sb")
+	public ModelAndView deleteMethod(int num, int currentPage, HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		service.deleteProcess(num, request);
+		
+		/*if(pdto.getTotalCount() % pdto.getBlockCount() - 1 == 0)
+			mav.addObject("currentPage", currentPage-1);
+		else
+			mav.addObject("currentPage", currentPage);*/
+		
+		PageDTO pv = new PageDTO(currentPage, service.countProcess());
+		if (pv.getTotalPage() <= currentPage)
+			mav.addObject("currentPage", pv.getTotalPage());
+		else
+			mav.addObject("currentPage", currentPage);
+		
+		mav.setViewName("redirect:/list.sb");
+		return mav;
+	}
+	
+	@RequestMapping("/contentdownload.sb")
+	public ModelAndView downMethod(int num) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("num", num);
+		mav.setViewName("download");
+		return mav;
+								//     뷰             모델명      모델값
+		//return new ModelAndView("download", "num", num);
+	}
+	
+	
 }

@@ -52,6 +52,7 @@ public class UpdateProAction {
 			}
 			
 			dto.setUpload(multi.getFilesystemName("upload"));
+			
 		} else {
 			//수정 첨부파일이 없으면
 			if(filename != null) {

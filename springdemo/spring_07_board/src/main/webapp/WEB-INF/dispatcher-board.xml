@@ -85,13 +85,22 @@
 	</bean>
 	
 	<!-- 다운로드 뷰 빈 선언 -->
-	
+	<bean id="download" class="view.BoardDownLoadView">
+		<property name="dao" ref="dao" />
+	</bean>
 	
 	<!-- [10] View 빈 선언 -->
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+	<!-- 우선순위를 지정. bean id 값하고 setViewName에서 선언한 값이 일치하는 빈을 실행하라라는 뜻 -->
+		<property name="order" value="1"></property>
+	</bean>
+	
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- InternalResourceViewResolver는 항상 마지막에 해야함, 일치하는 값을 못찾아버리면 종료해버림 -->
 		<property name="prefix" value="/WEB-INF/" />
-		<property name="suffix" value=".jsp" />		
+		<property name="suffix" value=".jsp" />	
+		<property name="order" value="2" />	
 	</bean>
 </beans>
 

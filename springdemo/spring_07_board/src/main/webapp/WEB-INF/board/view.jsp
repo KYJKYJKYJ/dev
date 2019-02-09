@@ -27,11 +27,11 @@
 	}
 
 	function updateRun() {
-		
+		$('#frm').attr('action', "update.sb").submit();
 	}
 
 	function deleteRun() {
-		
+		$('#frm').attr('action', "delete.sb").submit();
 	}
 </script>
 </head>
