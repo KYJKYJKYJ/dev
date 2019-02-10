@@ -5,8 +5,16 @@ import java.util.Date;
 import org.springframework.web.multipart.MultipartFile;
 
 public class BoardDTO {
-	private int num, readcount, ref, re_step, re_level;
+	private int num, readcount, ref, re_step, re_level, parent;
 	private String writer, email, subject, passwd, content, ip;
+	public int getParent() {
+		return parent;
+	}
+
+	public void setParent(int parent) {
+		this.parent = parent;
+	}
+
 	private Date reg_date;
 
 	// board테이블의 파일첨부를 처리해주는 멤버변수

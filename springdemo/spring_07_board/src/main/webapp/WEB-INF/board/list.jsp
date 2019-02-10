@@ -16,6 +16,23 @@
 		text-decoration: underline;
 		color:red;
 	}
+	
+	#table {
+		margin-top: 10px;
+		border-collapse: collapse;
+		border-spacing: 1px;
+		border: 1px solid black;
+		width: 60%;
+		margin : 0 auto;
+	}
+	
+	#time {
+		width: 20%;
+	}
+	
+	td, th {
+		border: 1px solid black;
+	}
 </style>
 
 </head>
@@ -27,12 +44,13 @@
 	
 	<div id="bodywrap">
 		<!-- 리스트 출력 -->
-		<table>
+		<table id="table">
 			<tr>
 				<th width="5%">번호</th>
-				<th width="45%">제목</th>
+				<th width="35%">제목</th>
 				<th width="20%">글쓴이</th>
 				<th width="5%">조회수</th>
+				<th width="10%" id="time">시간</th>
 			</tr>
 
 			<c:forEach var="dto" items="${aList}">
@@ -51,6 +69,7 @@
 					<a href="${path}">${dto.subject}</a></td>
 					<td>${dto.writer}</td>
 					<td>${dto.readcount}</td>
+					<td>${dto.reg_date}</td>
 				</tr>
 			</c:forEach>
 		</table>

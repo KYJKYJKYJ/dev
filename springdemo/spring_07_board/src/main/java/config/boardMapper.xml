@@ -16,6 +16,8 @@
       where b.rm>=#{startRow} and b.rm<=#{endRow}
    ]]>
 	</select>
+	
+	<!-- 답변에 최신을 하단으로 내릴 계층적 쿼리 방법을 모르겠음. 정렬 방법? 새로운 컬럼?? -->
 	 
 	<update id="readCount" parameterType="int">
 		update board
