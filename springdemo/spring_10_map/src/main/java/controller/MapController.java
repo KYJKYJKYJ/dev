@@ -47,6 +47,8 @@ public class MapController {
 		mav.setViewName("jsonView");
 		return mav;
 	}
+	
+	
 }//end class
 
 
