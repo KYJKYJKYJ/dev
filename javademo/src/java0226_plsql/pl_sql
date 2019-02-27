@@ -1,0 +1,56 @@
+CallableStatement 를 이용하여 oracle procedure 수행하기
+
+목적
+CallableStatement 를 이용하여 oracle procedure 수행
+
+정의
+output parameter 가 cursor 형 의 경우에는 procedure 에서 sys_refcursor 을 사용하였음
+java에선 getObject를 이용하여 cursor를 resultSet 으로 변환하였음
+
+소스
+parameter 없는 경우
+			con = ConnectionManager.getConnection();
+			cs=con.prepareCall("call test01()");
+			cs.executeUpdate();
+
+in out parameter가 존재하는 경우
+			con = ConnectionManager.getConnection();
+			cs=con.prepareCall("call test02(?, ?, ?, ?)");
+			cs.setString(1, "3");
+			cs.setString(2, "7");
+			cs.registerOutParameter(3, java.sql.Types.NUMERIC);
+			cs.registerOutParameter(4, java.sql.Types.VARCHAR);
+			cs.execute();
+			System.out.println("3:"+cs.getString(3));
+			System.out.println("4:"+cs.getString(4));
+
+out parameter가 cursor일 경우
+			con = ConnectionManager.getConnection();
+			cs=con.prepareCall("call test03(?)");
+			cs.registerOutParameter(1, OracleTypes.CURSOR);
+			cs.execute();
+			
+			rs=(ResultSet) cs.getObject(1);
+			while(rs.next()) {
+				System.out.println("name:"+rs.getString("nm"));
+			}
+
+cursor 반환 procedure 샘플
+create or replace procedure test03(
+    o_list out sys_refcursor
+)
+is
+
+begin
+    open o_list for 
+        select '이승구' AS nm from dual
+        union all
+        select '호랭이' AS nm from dual 
+        union all
+        select '얼록이' AS nm from dual        
+        union all
+        select '꺼이꺼이' AS nm from dual
+    ;
+end;
+
+

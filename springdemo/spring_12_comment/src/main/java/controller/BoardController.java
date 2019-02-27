@@ -59,6 +59,8 @@ public class BoardController {
 		return mav;
 	}
 	
+	//메소드에서 리턴되는 값은 View 를 통해서 출력되지 않고 HTTP Response Body 에 직접 쓰여지게 된다. @ResponseBody
+	//DTO를 JSON으로 처리할 때 주로 쓰인다.
 	//<mvc:annotation-driven/>
 	@RequestMapping("/replyInsertList.do")
 	public @ResponseBody List<ReplyDTO> replyListPage(ReplyDTO rdto, HttpServletRequest request) {

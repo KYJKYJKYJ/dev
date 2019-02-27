@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	<!-- Controller -->
+	<bean class="part01.controller.HomeController"></bean>
+	<bean class="part02.controller.IndexController"></bean>
+	<bean class="part02.controller.LoginController"></bean>
+	<bean class="part02.controller.NoticeController"></bean>
+	
+	<!-- Interceptor -->
+	<!-- 컨트롤러 접근 전,후 가로채서 처리 -->
+	<!-- preHandle() - [컨트롤러 접근] - postHandle() - [view 페이지 접근] - afterCompletion() -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<!-- <mvc:mapping path="/list.do"/>
+			<mvc:mapping path="/view.do"/> -->
+			<mvc:mapping path="/**" /> <!-- 모두 interceptor 영향 받도록함 -->
+			<!-- <mvc:mapping path="/part01/**" /> --> <!-- part01에서 모두 interceptor 영향 받도록함 -->
+			<mvc:exclude-mapping path="/write.do"/>
+			<!-- exclude-mapping : interceptor 영향을 받지 않도록 설정함 -->
+			<bean class="part01.interceptor.SampleIntercepter"></bean>
+			
+			<!-- 페이지가 많을 때 잘못 설정하면 낭패를 볼 수 있으므로 경로를 잘 구분해 주어야함 -->
+		</mvc:interceptor>
+		
+		<mvc:interceptor>
+			<mvc:mapping path="/noticeList.do"/>
+			<bean class="part02.interceptor.LoginInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
+	<!-- viewResolver -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/view/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+	
+</beans>
